@@ -1,0 +1,116 @@
+/* =========================
+   BASE / VARIABLES / TYPOGRAPHY
+========================= */
+:root {
+  /* Colors */
+  --bg-light: #ffffff;
+  --bg-dark: #1f1f1f;
+  --text-light: #111827;
+  --text-dark: #f3f4f6;
+  --primary-color: #2563eb;
+  --primary-color-dark: #3b82f6;
+  --card-bg-light: #ffffff;
+  --card-bg-dark: #1f1f1f;
+
+  /* Timeline specific */
+  --timeline-border: #2563eb;
+  --timeline-date: #2563eb;
+  --timeline-link: #2563eb;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 2.5rem;
+  --spacing-4xl: 5rem;
+
+  /* Misc */
+  --fade-duration: 0.8s;
+}
+
+/* Dark mode overrides */
+.dark {
+  --bg: var(--bg-dark);
+  --text: var(--text-dark);
+  --card-bg: var(--card-bg-dark);
+  --primary-color: var(--primary-color-dark);
+  --timeline-border: #3b82f6;
+  --timeline-date: #3b82f6;
+  --timeline-link: #3b82f6;
+}
+
+/* =========================
+   GLOBAL TYPOGRAPHY
+========================= */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif; /* Default stylish font for body */
+  font-weight: 400;
+  background-color: var(--bg-light);
+  color: var(--text-light);
+  transition: background 0.4s, color 0.4s;
+}
+
+.dark body {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Pacifico', cursive;  /* Stylish font for headings */
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-light);
+  margin-bottom: var(--spacing-md);
+}
+
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  color: var(--text-dark);
+}
+
+/* Utility class for custom paragraph fonts */
+.font-pacifico {
+  font-family: 'Pacifico', cursive !important;
+}
+
+/* Section spacing */
+section {
+  padding: var(--spacing-xl) 0;
+}
+
+section h1, section h2, section h3 {
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+
+section p + p {
+  margin-top: var(--spacing-md);
+}
+
+section ul, section ol {
+  margin: var(--spacing-md) 0;
+  padding-left: var(--spacing-lg);
+}
+
+
+
+/* ===================================
+   UNIVERSAL LIST STYLING
+=================================== */
+ul, ol {
+  margin-top: 1.5rem;        /* space above lists */
+  padding-left: 1.75rem;     /* consistent indentation */
+}
+
+ul li, ol li {
+  margin-bottom: 0.9rem;     /* gap between list items */
+  line-height: 1.6;
+}

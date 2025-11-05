@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Kshitij Kumar Pandey</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <link rel="icon" href="data:,">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header id="navbar">
+    <div class="container">
+      <div class="logo"></div>
+
+      <nav>
+        <ul>
+          <li><a href="#hero" class="top-link">Home</a></li>
+          <li><a href="#about" class="top-link">About</a></li>
+          <li><a href="#employment" class="top-link">Employment</a></li>
+          <li><a href="#education" class="top-link">Education</a></li>
+          <li><a href="#research" class="top-link">Research</a></li>
+          <li><a href="#teaching" class="top-link">Teaching</a></li>
+          <li><a href="#honours" class="top-link">Honours</a></li>
+          <li><a href="#events" class="top-link">Activities</a></li>
+          <li><a href="#contact" class="top-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- THEME TOGGLE -->
+      <div class="theme-toggle-wrapper">
+        <button id="themeButton" class="theme-button" title="Toggle theme">🌓</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main id="mainContent" class="main-content">
+    <!-- All sections including hero will be dynamically loaded here -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="footerContainer"></footer>
+
+  <!-- MODULE SCRIPTS -->
+  <script type="module">
+    import { loadSections } from "./js/main.js";
+    import { initDarkMode } from "./js/initDarkMode.js";
+    import { initNavigation } from "./js/initNavigation.js";
+    import { initHeroTicker } from "./js/initHeroTicker.js";
+    import { initScrollSpy } from "./js/initScrollSpy.js";
+    import { initResearchFilters } from "./js/initResearchFilters.js";
+    import { initContactForm } from "./js/initContactForm.js";
+
+    window.initDarkMode = initDarkMode;
+    window.initNavigation = initNavigation;
+    window.initHeroTicker = initHeroTicker;
+    window.initScrollSpy = initScrollSpy;
+    window.initResearchFilters = initResearchFilters;
+    window.initContactForm = initContactForm;
+
+    window.addEventListener("DOMContentLoaded", async () => {
+      console.log("🌐 DOM loaded, fetching sections...");
+      await loadSections();
+      console.log("✅ All sections fetched successfully.");
+    });
+  </script>
+</body>
+</html>
