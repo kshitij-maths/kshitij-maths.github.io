@@ -1,0 +1,130 @@
+/* =========================
+   ADDRESS-PROFILES CARD
+========================= */
+.address-profiles-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  background-color: var(--card-bg-light);
+  padding: var(--spacing-xl);
+  border-radius: 1rem;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.address-profiles-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+/* =========================
+   SUB-CARDS WITH DISTINCT STYLE
+========================= */
+
+/* General sub-card styles */
+.contact-sub-card {
+  flex: 1;
+  min-width: 280px;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect on sub-cards */
+.contact-sub-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+/* Left sub-card: Address */
+#address-card {
+  background: linear-gradient(135deg, #ffffff, #f0f0f5);
+  border-left: 4px solid #4a90e2;
+}
+
+/* Right sub-card: Profiles */
+#profiles-card {
+  background: linear-gradient(135deg, #f9f9f9, #e9f1fc);
+  border-left: 4px solid #50c878;
+}
+
+/* Headings inside sub-cards */
+.contact-sub-card h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-light);
+}
+
+.dark .contact-sub-card h3 {
+  color: var(--text-dark);
+}
+
+/* Paragraphs inside sub-cards */
+.contact-sub-card p {
+  line-height: 1.6;
+  color: var(--text-light);
+}
+
+.dark .contact-sub-card p {
+  color: var(--text-dark);
+}
+
+/* =========================
+   PROFILE LINKS
+========================= */
+.profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.profile-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  background-color: var(--bg-light);
+  color: var(--primary-color);
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.profile-link:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* Square logos with proper aspect ratio */
+.profile-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 0.25rem; /* optional rounded corners */
+}
+
+/* Dark mode for profile links */
+.dark .profile-link {
+  background-color: var(--bg-dark);
+  color: var(--primary-color-dark);
+}
+
+.dark .profile-link:hover {
+  background-color: var(--primary-color-dark);
+  color: #fff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .address-profiles-card {
+    flex-direction: column;
+  }
+
+  .contact-sub-card {
+    min-width: 100%;
+  }
+}
