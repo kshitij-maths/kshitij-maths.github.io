@@ -66,10 +66,18 @@ function initializeDynamicContent() {
     window.initContactForm();
   }
 
+
+  if (typeof window.initPopAnimations === "function") {
+    window.initPopAnimations();
+    console.log("🎇 Pop-in/out animations initialized.");
+}
+
+
   // Animate fade-ins
   document.querySelectorAll(".animate-fadeIn").forEach(el => {
     el.classList.add("fade-in-start");
   });
+  
 
   // Optional: Add any custom JS for address-profiles-card if needed
   const addressCard = document.getElementById("address-profiles-card");

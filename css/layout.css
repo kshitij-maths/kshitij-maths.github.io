@@ -144,3 +144,22 @@ footer.footer {
   background: var(--card-bg-dark);
   color: var(--text-dark);
 }
+
+
+
+
+
+/* =========================
+   POP-IN / POP-OUT ANIMATION
+========================= */
+.animate-pop {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+  transform-origin: center top;
+}
+
+.animate-pop.visible {
+  opacity: 1;
+  transform: scale(1);
+}
