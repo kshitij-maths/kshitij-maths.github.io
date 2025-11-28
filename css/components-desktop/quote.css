@@ -1,0 +1,33 @@
+.quote-card {
+  max-width: 700px; margin: 2rem auto; padding: 3rem 2rem;
+  background-color: #fff3b0; border-radius: 1rem; text-align: center;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1); position: relative; overflow: hidden;
+}
+
+.quote-card::before {
+  content: "π"; position: absolute; top: 10%; left: 50%;
+  transform: translateX(-50%); font-size: 6rem; color: rgba(255,165,0,0.25);
+  z-index: 0; pointer-events: none;
+  animation: floatSlow 8s ease-in-out infinite alternate;
+}
+
+.quote-card .math-symbol {
+  position: absolute; color: rgba(255,165,0,0.35); font-weight: bold;
+  z-index: 0; pointer-events: none; user-select: none;
+}
+
+@keyframes floatSlow {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(5deg); }
+  100% { transform: translateY(0) rotate(-5deg); }
+}
+
+.quote-text {
+  color: #b71c1c; font-size: 1.5rem; font-style: italic;
+  margin: 0.5rem 0; position: relative; z-index: 1;
+}
+
+.quote-translation {
+  color: #b71c1c; font-size: 1.125rem; font-weight: 500;
+  margin-top: 0.5rem; position: relative; z-index: 1;
+}

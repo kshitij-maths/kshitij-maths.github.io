@@ -1,0 +1,17 @@
+/* =========================
+   MOBILE STYLES - ADDRESS-PROFILES.CSS
+========================= */
+@media (max-width: 768px) {
+.address-profiles-card {
+    flex-direction: column;
+  }
+
+  .contact-sub-card {
+    min-width: 100%;
+  }
+
+  .profile-links {
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    gap: 1.2rem;
+  }
+}

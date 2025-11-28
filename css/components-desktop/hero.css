@@ -1,0 +1,61 @@
+/* =========================
+   HERO SECTION
+   ========================= */
+.hero-section {
+  min-height: auto;                  /* height fits content */
+  display: flex;
+  align-items: flex-start;           /* content starts at top, matches other sections */
+  justify-content: center;
+  overflow: hidden;
+  padding-top: var(--spacing-2xl);   /* same as other sections */
+  padding-bottom: var(--spacing-2xl);
+}
+
+.hero-container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;                        /* container horizontal padding handled by .container */
+  gap: var(--spacing-4xl);           /* optional spacing between text and image */
+}
+
+.hero-text {
+  width: 45%;
+}
+
+.hero-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: var(--spacing-md);
+  color: #1e40af;
+  transition: color 0.8s ease-in-out;
+}
+
+.dark .hero-name {
+  color: #60a5fa;
+}
+
+.hero-role {
+  font-size: 1rem;
+}
+
+.hero-image {
+  width: 45%;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transition: box-shadow 0.3s;
+}
+
+/* =========================
+   MOBILE ADJUSTMENTS
+   ========================= */

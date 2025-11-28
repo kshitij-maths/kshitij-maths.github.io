@@ -1,0 +1,32 @@
+/* =========================
+   MOBILE STYLES - TIMELINE.CSS
+========================= */
+@media (max-width: 768px) {
+:root {
+    --timeline-circle-size: 0.8rem;
+    --timeline-circle-border: 2px;
+    --timeline-padding-left: 2.5rem;
+    --timeline-date-width: 90px;
+    --timeline-gap: 0.5rem;
+  }
+
+.timeline-item {
+    margin-bottom: 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .timeline-marker {
+    width: var(--timeline-circle-size);
+    height: var(--timeline-circle-size);
+    border-width: var(--timeline-circle-border);
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-date {
+    font-size: 0.8rem;
+    min-width: var(--timeline-date-width);
+    margin-right: 0;
+    margin-bottom: 0.25rem;
+  }
+}

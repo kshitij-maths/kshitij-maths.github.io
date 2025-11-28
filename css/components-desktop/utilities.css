@@ -1,0 +1,35 @@
+/* =========================
+   CARDS & BUTTONS
+   ========================= */
+.card, .contact-card, .quote-card {
+  border-radius: 1rem; padding: var(--spacing-xl);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  transition: background 0.4s, box-shadow 0.4s;
+}
+
+.dark .card, .dark .contact-card, .dark .quote-card {
+  box-shadow: 0 8px 30px rgba(255,255,255,0.05);
+}
+
+/* Fade-in animations */
+.animate-fadeIn {
+  opacity: 0; transform: translateY(20px);
+  animation: fadeIn var(--fade-duration) forwards;
+}
+
+.animate-fadeIn.delay-200 { animation-delay: 0.2s; }
+.animate-fadeIn.delay-400 { animation-delay: 0.4s; }
+
+@keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+
+/* Reusable buttons */
+button { cursor: pointer; transition: all 0.3s ease; border-radius: 0.5rem; padding: var(--spacing-xs) var(--spacing-lg); }
+
+.type-filter-btn, .year-filter-btn {
+  background-color: #f3f4f6; color: #374151; border-radius: 0.5rem;
+  padding: var(--spacing-xs) var(--spacing-md);
+}
+
+.type-filter-btn.bg-blue-600, .year-filter-btn.bg-blue-600 {
+  background-color: var(--primary-color) !important; color: white !important;
+}

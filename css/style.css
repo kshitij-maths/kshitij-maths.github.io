@@ -3,10 +3,21 @@
 ========================= */
 @import './base.css';
 @import './layout.css';
-@import './hero.css';
-@import './research.css';
-@import './timeline.css';
-@import './contact.css';
-@import './address-profiles.css';
-@import './quote.css';
-@import './utilities.css';
+
+/* Desktop Component Styles */
+@import './components-desktop/research.css';
+@import './components-desktop/contact.css';
+@import './components-desktop/hero.css';
+@import './components-desktop/address-profiles.css';
+@import './components-desktop/quote.css';
+@import './components-desktop/utilities.css';
+@import './components-desktop/timeline.css';
+
+/* Mobile Component Styles - Overrides desktop when needed */
+@import './components-mobile/research.css';
+@import './components-mobile/contact.css';
+@import './components-mobile/hero.css';
+@import './components-mobile/address-profiles.css';
+@import './components-mobile/quote.css';
+@import './components-mobile/utilities.css';
+@import './components-mobile/timeline.css';

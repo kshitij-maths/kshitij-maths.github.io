@@ -1,0 +1,13 @@
+/* =========================
+   MOBILE STYLES - HERO.CSS
+========================= */
+@media (max-width: 768px) {
+.hero-container {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-xl);
+  }
+  .hero-text, .hero-image {
+    width: 100%;
+  }
+}

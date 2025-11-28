@@ -1,0 +1,73 @@
+
+/* =========================
+   PUBLICATIONS LIST STYLING
+========================= */
+
+#pubList {
+  counter-reset: pub-counter;
+  list-style: none;
+  margin-left: 2.5rem;
+  padding-left: 0;
+  padding-top: 1.5rem;
+}
+
+#pubList li {
+  counter-increment: pub-counter;
+  position: relative;
+  margin-bottom: 1.4rem;
+  line-height: 1.65;
+  transition: all 0.3s ease-in-out !important;
+  transform-origin: left center;
+  color: #374151; /* Neutral base */
+  background: transparent;
+  cursor: default;
+}
+
+/* Number styling */
+#pubList li::before {
+  content: counter(pub-counter) ".";
+  position: absolute;
+  left: -2rem;
+  top: 0;
+  color: #9ca3af;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+/* Journal name styling */
+.journal-name {
+  color: #2563eb; /* Base blue */
+  font-style: italic;
+  font-weight: 500;
+  transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+/* DOI links */
+.pub-item a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+/* =========================
+   HOVER EFFECTS
+========================= */
+#pubList li:hover {
+  transform: scale(1.03);
+  color: #1e40af !important; /* Main text hover color */
+  background-color: rgba(37, 99, 235, 0.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+
+/* Journal name becomes more intense (brighter + slightly bolder) */
+#pubList li:hover .journal-name {
+  color: #0b59d1 !important; /* More vivid blue */
+  font-weight: 600;
+}
+
+/* Optional: number color darkens slightly */
+#pubList li:hover::before {
+  color: #1e3a8a;
+}
