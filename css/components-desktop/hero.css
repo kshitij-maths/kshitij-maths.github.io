@@ -1,14 +1,14 @@
 /* =========================
    HERO SECTION
-   ========================= */
+========================= */
 .hero-section {
-  min-height: auto;                  /* height fits content */
+  min-height: auto;
   display: flex;
-  align-items: flex-start;           /* content starts at top, matches other sections */
+  align-items: flex-start;
   justify-content: center;
   overflow: hidden;
-  padding-top: var(--spacing-2xl);   /* same as other sections */
-  padding-bottom: var(--spacing-2xl);
+  padding-top: var(--spacing-4xl);
+  padding-bottom: var(--spacing-3xl);
 }
 
 .hero-container {
@@ -17,15 +17,20 @@
   max-width: 1200px;
   align-items: center;
   justify-content: space-between;
-  padding: 0;                        /* container horizontal padding handled by .container */
-  gap: var(--spacing-4xl);           /* optional spacing between text and image */
+  gap: var(--spacing-4xl);
 }
 
 .hero-text {
   width: 45%;
+  min-width: 260px;
 }
 
+/* --- FIXED-WIDTH WRAPPER TO PREVENT ROLE JUMP --- */
 .hero-name {
+  display: inline-block;
+  width: 25rem;        /* ← ensures no horizontal movement */
+  min-height: 2.2rem;    /* ← ensures no vertical movement */
+  overflow: hidden;    /* hides scaled Hindi overflow */
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: var(--spacing-md);
@@ -37,6 +42,18 @@
   color: #60a5fa;
 }
 
+/* --- ENGLISH NORMAL --- */
+.hero-name.english .name-inner {
+  transform: none;
+}
+
+/* --- HINDI SCALE-X ONLY (widen horizontally) --- */
+.hero-name.hindi .name-inner {
+  transform: scaleX(1.25);   /* widen without increasing height */
+  transform-origin: left;
+  display: inline-block;
+}
+
 .hero-role {
   font-size: 1rem;
 }
@@ -45,6 +62,7 @@
   width: 45%;
   display: flex;
   justify-content: center;
+  margin-left: 4rem;          /* your custom shift-right */
 }
 
 .hero-image img {
@@ -52,10 +70,10 @@
   height: 300px;
   border-radius: 50%;
   object-fit: cover;
+  background: transparent;
+  background-clip: padding-box;
+  mask-image: radial-gradient(circle, white 98%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle, white 98%, transparent 100%);
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   transition: box-shadow 0.3s;
 }
-
-/* =========================
-   MOBILE ADJUSTMENTS
-   ========================= */

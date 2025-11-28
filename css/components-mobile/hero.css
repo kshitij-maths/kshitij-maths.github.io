@@ -1,13 +1,20 @@
 /* =========================
-   MOBILE STYLES - HERO.CSS
+   MOBILE ADJUSTMENTS
 ========================= */
 @media (max-width: 768px) {
-.hero-container {
+
+  .hero-container {
     flex-direction: column;
     text-align: center;
     gap: var(--spacing-xl);
   }
+
   .hero-text, .hero-image {
     width: 100%;
+    margin-left: 0;   /* reset mobile spacing */
+  }
+
+  .hero-name {
+    width: 100%;      /* auto width for mobile */
   }
 }
