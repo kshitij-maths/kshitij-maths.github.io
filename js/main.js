@@ -1,5 +1,5 @@
 // ================================
-// main.js (final stable version with address-profiles-card)
+// main.js
 // ================================
 export async function loadSections() {
   const sections = [
@@ -66,12 +66,16 @@ function initializeDynamicContent() {
     window.initContactForm();
   }
 
+  // Mobile navigation (only on mobile)
+  if (typeof window.initMobileNav === "function" && window.innerWidth <= 768) {
+    console.log("📱 Initializing Mobile Navigation...");
+    window.initMobileNav();
+  }
 
   if (typeof window.initPopAnimations === "function") {
     window.initPopAnimations();
     console.log("🎇 Pop-in/out animations initialized.");
-}
-
+  }
 
   // Animate fade-ins
   document.querySelectorAll(".animate-fadeIn").forEach(el => {

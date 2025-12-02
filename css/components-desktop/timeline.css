@@ -120,7 +120,6 @@
 
 .timeline-content a {
   color: var(--timeline-link);
-  text-decoration: underline;
   transition: color 0.3s ease;
 }
 
@@ -136,7 +135,3 @@
 .timeline-content p + p {
   margin-top: 0;
 }
-
-/* =========================
-   RESPONSIVE
-   ========================= */
