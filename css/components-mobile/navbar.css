@@ -2,13 +2,21 @@
    GLOBAL (Hide Hamburger on Desktop)
 ========================= */
 .hamburger-btn {
-  display: none; /* Hidden by default so desktop is untouched */
-  background: none;
+  display: none; 
+  background: none !important;
   border: none;
   cursor: pointer;
   padding: 0.5rem;
+  margin: 0;
   flex-direction: column;
   gap: 5px;
+  align-self: center;
+  justify-content: center;
+}
+
+.hamburger-btn:hover,
+.hamburger-btn:focus {
+  background: none !important;
 }
 
 .hamburger-btn .bar {
@@ -29,19 +37,20 @@
 @media (max-width: 768px) {
   
   /* --- 1. Container Layout --- */
-  /* HIGH SPECIFICITY to override layout.css */
   header#navbar .mobile-nav-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; 
     
-    /* WIDTH REDUCTION FIX */
-    width: 90% !important;      /* Physically reduce width to 90% of screen */
-    margin: 0 auto !important;  /* Center the reduced container */
-    padding: 0.5rem !important; /* Keep standard small padding */
+    /* MARGIN/WIDTH FIX: Perfectly centered */
+    width: 94% !important;     
+    margin: 0 auto !important; 
+    padding: 0.5rem !important;
     
     position: relative;
     overflow: visible !important;
+    
+    /* Top bar background remains (inherited from layout.css) */
   }
 
   /* Force Order: Hamburger (Left), Nav (Center), Theme (Right) */
@@ -49,7 +58,8 @@
     display: flex; 
     order: 1; 
     flex-shrink: 0;
-    margin-right: 0.25rem;
+    margin-right: 0; 
+    align-self: center;
   }
   
   #mainNav { 
@@ -57,53 +67,58 @@
     flex: 1; 
     display: flex;
     justify-content: center;
-    overflow: hidden; /* Hide links outside the "window" */
+    align-items: center; 
+    overflow: hidden; 
     margin: 0;
-    min-width: 0; /* Allow flex shrinking if necessary */
+    min-width: 0;
   }
   
   .theme-toggle-wrapper { 
     order: 3; 
     flex-shrink: 0;
-    margin-left: 0.25rem;
+    margin-left: 0; 
+    display: flex;
+    align-items: center;
   }
   
-  /* Hide the old logo div on mobile to save space */
   .logo { display: none; }
 
-  /* --- 2. Dynamic Link Visibility --- */
-  /* HIGH SPECIFICITY to override desktop 'flex-wrap: wrap' */
+  /* --- 2. Dynamic Link Visibility (Collapsed) --- */
   header#navbar #mainNav ul {
     display: flex;
-    flex-wrap: nowrap !important; /* CRITICAL: Force single row */
+    flex-wrap: nowrap !important;
     gap: 0.2rem;
     justify-content: space-evenly;
+    align-items: center; 
     width: 100%;
     margin: 0;
     padding: 0;
+    height: 100%;
   }
 
-  /* Hide all links by default on mobile */
   #mainNav li {
     display: none;
+    align-items: center; 
   }
 
-  /* Only show the 3 specific links calculated by JS */
   #mainNav li.mobile-visible {
-    display: block;
-    flex-shrink: 1; /* Allow link container to shrink slightly if needed */
+    display: flex;       
+    flex-shrink: 1; 
     animation: fadeIn 0.3s ease;
   }
 
-  /* Link Styling for Mobile Row */
   #mainNav a.top-link {
-    font-size: 0.8rem; /* Compact font size */
-    padding: 0.4rem 0.4rem; /* Compact padding */
-    white-space: nowrap; /* Ensure text doesn't wrap inside the button */
-    display: inline-block;
+    font-size: 0.8rem;
+    padding: 0.4rem 0.4rem;
+    white-space: nowrap;
+    display: flex;          
+    align-items: center;    
+    justify-content: center;
+    height: 100%;
+    line-height: 1;         
   }
 
-  /* --- 3. EXPANDED MENU STATE --- */
+  /* --- 3. EXPANDED MENU STATE (Vertical Box) --- */
   #navbar.expanded {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -112,43 +127,59 @@
   #navbar.expanded #mainNav {
     position: absolute;
     top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--card-bg-light);
-    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-    padding: 1rem 0;
+    left: 0;      
+    right: auto;  
+    
+    /* WIDTH FIX: Tighter fit, remove large min-width */
+    width: -moz-fit-content;
+    width: fit-content;
+    min-width: auto; /* Allow box to shrink to text size */
+    max-width: 70vw;
+    
+    /* NO BACKGROUND FOR DROPDOWN BOX */
+    background: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    
+    padding: 0.5rem 0;
     z-index: 999;
-    border-top: 1px solid rgba(0,0,0,0.05);
-    /* Reset margins for absolute positioning */
-    margin: 0; 
-    overflow: visible;
-    /* Ensure dropdown is full width relative to the reduced container */
-    width: 100%; 
+    border-radius: 0.5rem;
+    margin-top: 5px; 
+    
+    overflow: hidden; 
   }
 
   .dark #navbar.expanded #mainNav {
-    background: var(--card-bg-dark);
-    border-top: 1px solid rgba(255,255,255,0.05);
+    background: none !important;
+    border: none !important;
   }
 
   #navbar.expanded #mainNav ul {
     flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap !important; /* Reset to allow flow in vertical mode */
+    align-items: flex-start; /* Left Align */
+    gap: 0;
+    flex-wrap: nowrap !important;
+    width: 100%;
   }
 
-  /* Force show ALL links when menu is expanded */
   #navbar.expanded #mainNav li {
     display: block !important;
+    width: 100%;
+    border-bottom: none !important;
   }
   
+  /* LINK WIDTH FIX: Inline-block makes hover/active border fit text */
   #navbar.expanded #mainNav a.top-link {
-    font-size: 1.1rem;
-    padding: 0.5rem 2rem;
-    display: block;
-    width: 100%;
-    text-align: center;
+    font-size: 0.95rem;
+    padding: 0.4rem 0.5rem; /* Standard desktop-like padding */
+    display: inline-block;  /* Key change: Only takes necessary width */
+    width: auto;
+    text-align: left; 
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1); 
+  }
+  
+  .dark #navbar.expanded #mainNav a.top-link {
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
   }
 
   /* Hamburger Animation */
