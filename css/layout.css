@@ -9,7 +9,8 @@
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 var(--spacing-md);
+    /* Increased padding to slightly reduce content width */
+    padding: 0 var(--spacing-lg);
   }
 }
 

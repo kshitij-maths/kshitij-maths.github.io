@@ -1,6 +1,8 @@
 // ================================
 // main.js
 // ================================
+import { initMobileNavbar } from "./initMobileNavbar.js";
+
 export async function loadSections() {
   const sections = [
     "hero.html",
@@ -66,12 +68,7 @@ function initializeDynamicContent() {
     window.initContactForm();
   }
 
-  // Mobile navigation (only on mobile)
-  if (typeof window.initMobileNav === "function" && window.innerWidth <= 768) {
-    console.log("📱 Initializing Mobile Navigation...");
-    window.initMobileNav();
-  }
-
+  // Pop animations
   if (typeof window.initPopAnimations === "function") {
     window.initPopAnimations();
     console.log("🎇 Pop-in/out animations initialized.");
@@ -81,12 +78,16 @@ function initializeDynamicContent() {
   document.querySelectorAll(".animate-fadeIn").forEach(el => {
     el.classList.add("fade-in-start");
   });
-  
 
   // Optional: Add any custom JS for address-profiles-card if needed
   const addressCard = document.getElementById("address-profiles-card");
   if (addressCard) {
     console.log("🏠 Address & Profiles card loaded.");
-    // e.g., custom hover effects for profile icons can go here
+  }
+
+  // Mobile Navbar
+  if (typeof window.initMobileNavbar === "function") {
+    console.log("📱 Initializing Mobile Navbar...");
+    window.initMobileNavbar();
   }
 }

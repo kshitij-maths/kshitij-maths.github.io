@@ -5,22 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dr. Kshitij Kumar Pandey</title>
 
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
   <link rel="stylesheet" href="css/style.css" />
 
   <link rel="icon" href="data:,">
 </head>
 <body>
 
-  <!-- NAVBAR -->
   <header id="navbar">
-    <div class="container">
-      <div class="logo"></div>
+    <div class="container mobile-nav-container">
+      
+      <button id="mobileMenuBtn" class="hamburger-btn" aria-label="Toggle Menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
 
-      <nav>
+      <div class="logo"></div> 
+      <nav id="mainNav">
         <ul>
           <li><a href="#hero" class="top-link">Home</a></li>
           <li><a href="#about" class="top-link">About</a></li>
@@ -34,22 +37,18 @@
         </ul>
       </nav>
 
-      <!-- THEME TOGGLE -->
       <div class="theme-toggle-wrapper">
         <button id="themeButton" class="theme-button" title="Toggle theme">🌓</button>
       </div>
+
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
   <main id="mainContent" class="main-content">
-    <!-- All sections will be dynamically loaded here by main.js -->
-  </main>
+    </main>
 
-  <!-- FOOTER -->
   <footer class="footer" id="footerContainer"></footer>
 
-  <!-- MODULE SCRIPTS -->
   <script type="module">
     import { loadSections } from "./js/main.js";
     import { initDarkMode } from "./js/initDarkMode.js";
@@ -59,6 +58,7 @@
     import { initResearchFilters } from "./js/initResearchFilters.js";
     import { initContactForm } from "./js/initContactForm.js";
     import { initPopAnimations } from "./js/initPopAnimations.js";
+    import { initMobileNavbar } from "./js/initMobileNavbar.js"; // Corrected path
 
     window.initDarkMode = initDarkMode;
     window.initNavigation = initNavigation;
@@ -67,6 +67,7 @@
     window.initResearchFilters = initResearchFilters;
     window.initContactForm = initContactForm;
     window.initPopAnimations = initPopAnimations;
+    window.initMobileNavbar = initMobileNavbar;
 
     window.addEventListener("DOMContentLoaded", async () => {
       console.log("🌐 DOM loaded, fetching sections...");

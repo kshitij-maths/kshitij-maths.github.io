@@ -1,0 +1,158 @@
+/* =========================
+   GLOBAL (Hide Hamburger on Desktop)
+========================= */
+.hamburger-btn {
+  display: none; /* Hidden by default so desktop is untouched */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hamburger-btn .bar {
+  width: 24px;
+  height: 3px;
+  background-color: var(--text-light);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.dark .hamburger-btn .bar {
+  background-color: var(--text-dark);
+}
+
+/* =========================
+   MOBILE NAVBAR STYLES (Max-width 768px)
+========================= */
+@media (max-width: 768px) {
+  
+  /* --- 1. Container Layout --- */
+  /* HIGH SPECIFICITY to override layout.css */
+  header#navbar .mobile-nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    /* WIDTH REDUCTION FIX */
+    width: 90% !important;      /* Physically reduce width to 90% of screen */
+    margin: 0 auto !important;  /* Center the reduced container */
+    padding: 0.5rem !important; /* Keep standard small padding */
+    
+    position: relative;
+    overflow: visible !important;
+  }
+
+  /* Force Order: Hamburger (Left), Nav (Center), Theme (Right) */
+  .hamburger-btn { 
+    display: flex; 
+    order: 1; 
+    flex-shrink: 0;
+    margin-right: 0.25rem;
+  }
+  
+  #mainNav { 
+    order: 2; 
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    overflow: hidden; /* Hide links outside the "window" */
+    margin: 0;
+    min-width: 0; /* Allow flex shrinking if necessary */
+  }
+  
+  .theme-toggle-wrapper { 
+    order: 3; 
+    flex-shrink: 0;
+    margin-left: 0.25rem;
+  }
+  
+  /* Hide the old logo div on mobile to save space */
+  .logo { display: none; }
+
+  /* --- 2. Dynamic Link Visibility --- */
+  /* HIGH SPECIFICITY to override desktop 'flex-wrap: wrap' */
+  header#navbar #mainNav ul {
+    display: flex;
+    flex-wrap: nowrap !important; /* CRITICAL: Force single row */
+    gap: 0.2rem;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Hide all links by default on mobile */
+  #mainNav li {
+    display: none;
+  }
+
+  /* Only show the 3 specific links calculated by JS */
+  #mainNav li.mobile-visible {
+    display: block;
+    flex-shrink: 1; /* Allow link container to shrink slightly if needed */
+    animation: fadeIn 0.3s ease;
+  }
+
+  /* Link Styling for Mobile Row */
+  #mainNav a.top-link {
+    font-size: 0.8rem; /* Compact font size */
+    padding: 0.4rem 0.4rem; /* Compact padding */
+    white-space: nowrap; /* Ensure text doesn't wrap inside the button */
+    display: inline-block;
+  }
+
+  /* --- 3. EXPANDED MENU STATE --- */
+  #navbar.expanded {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  #navbar.expanded #mainNav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--card-bg-light);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    padding: 1rem 0;
+    z-index: 999;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    /* Reset margins for absolute positioning */
+    margin: 0; 
+    overflow: visible;
+    /* Ensure dropdown is full width relative to the reduced container */
+    width: 100%; 
+  }
+
+  .dark #navbar.expanded #mainNav {
+    background: var(--card-bg-dark);
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  #navbar.expanded #mainNav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap !important; /* Reset to allow flow in vertical mode */
+  }
+
+  /* Force show ALL links when menu is expanded */
+  #navbar.expanded #mainNav li {
+    display: block !important;
+  }
+  
+  #navbar.expanded #mainNav a.top-link {
+    font-size: 1.1rem;
+    padding: 0.5rem 2rem;
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Hamburger Animation */
+  #navbar.expanded .hamburger-btn .bar:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+  #navbar.expanded .hamburger-btn .bar:nth-child(2) { opacity: 0; }
+  #navbar.expanded .hamburger-btn .bar:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+}
