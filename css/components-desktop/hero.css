@@ -7,8 +7,7 @@
   align-items: flex-start;
   justify-content: center;
   overflow: hidden;
-  padding-top: var(--spacing-4xl);
-  padding-bottom: var(--spacing-3xl);
+  /* Padding removed to use universal rule from base.css */
 }
 
 .hero-container {
@@ -28,12 +27,12 @@
 /* --- FIXED-WIDTH WRAPPER TO PREVENT ROLE JUMP --- */
 .hero-name {
   display: inline-block;
-  width: 25rem;        /* ← ensures no horizontal movement */
-  min-height: 2.2rem;    /* ← ensures no vertical movement */
-  overflow: hidden;    /* hides scaled Hindi overflow */
+  width: 25rem;        
+  min-height: 2.2rem;    
+  overflow: hidden;    
   font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: 0.25rem; 
   color: #1e40af;
   transition: color 0.8s ease-in-out;
 }
@@ -49,20 +48,21 @@
 
 /* --- HINDI SCALE-X ONLY (widen horizontally) --- */
 .hero-name.hindi .name-inner {
-  transform: scaleX(1.25);   /* widen without increasing height */
+  transform: scaleX(1.25);   
   transform-origin: left;
   display: inline-block;
 }
 
 .hero-role {
   font-size: 1rem;
+  margin-top: 0; 
 }
 
 .hero-image {
   width: 45%;
   display: flex;
   justify-content: center;
-  margin-left: 4rem;          /* your custom shift-right */
+  margin-left: 4rem;          
 }
 
 .hero-image img {

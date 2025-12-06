@@ -1,5 +1,8 @@
 .quote-card {
-  max-width: 700px; margin: 2rem auto; padding: 3rem 2rem;
+  max-width: 700px; 
+  /* CHANGED: Removed 2rem vertical margin to match universal spacing */
+  margin: 0 auto; 
+  padding: 3rem 2rem;
   background-color: #fff3b0; border-radius: 1rem; text-align: center;
   box-shadow: 0 8px 30px rgba(0,0,0,0.1); position: relative; overflow: hidden;
 }

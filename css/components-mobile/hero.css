@@ -4,7 +4,7 @@
 @media (max-width: 768px) {
 
   .hero-container {
-    flex-direction: column;
+    flex-direction: column-reverse;
     text-align: center;
     gap: var(--spacing-xl);
   }
@@ -16,5 +16,9 @@
 
   .hero-name {
     width: 100%;      /* auto width for mobile */
+  }
+
+  .hero-name.hindi .name-inner {
+    transform-origin: center;
   }
 }

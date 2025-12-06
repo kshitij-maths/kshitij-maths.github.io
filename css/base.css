@@ -100,8 +100,9 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Pacifico', cursive !important;
 }
 
+/* UNIVERSAL SECTION SPACING */
 section {
-  padding: var(--spacing-xl) 0;
+  padding: var(--spacing-xs) 0; /* 1.5rem top/bottom */
 }
 
 section h1, section h2, section h3 {
