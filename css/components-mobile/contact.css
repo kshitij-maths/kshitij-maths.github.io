@@ -3,5 +3,7 @@
 ========================= */
 /* No mobile-specific styles for contact.css */
 @media (max-width: 768px) {
-  /* Add mobile styles here */
+.contact-card {
+  max-width: 270px;
+}
 }

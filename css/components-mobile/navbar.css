@@ -42,7 +42,6 @@
     justify-content: space-between;
     align-items: center; 
     
-    /* MARGIN/WIDTH FIX: Perfectly centered */
     width: 94% !important;     
     margin: 0 auto !important; 
     padding: 0.5rem !important;
@@ -96,12 +95,13 @@
     height: 100%;
   }
 
-  #mainNav li {
+  /* FIXED SPECIFICITY: Use ID chain to override layout.css */
+  header#navbar #mainNav li {
     display: none;
     align-items: center; 
   }
 
-  #mainNav li.mobile-visible {
+  header#navbar #mainNav li.mobile-visible {
     display: flex;       
     flex-shrink: 1; 
     animation: fadeIn 0.3s ease;
@@ -130,10 +130,10 @@
     left: 0;      
     right: auto;  
     
-    /* WIDTH FIX: Tighter fit, remove large min-width */
+    /* WIDTH FIX: Tighter fit */
     width: -moz-fit-content;
     width: fit-content;
-    min-width: auto; /* Allow box to shrink to text size */
+    min-width: auto; 
     max-width: 70vw;
     
     /* NO BACKGROUND FOR DROPDOWN BOX */
@@ -162,7 +162,8 @@
     width: 100%;
   }
 
-  #navbar.expanded #mainNav li {
+  /* Specificity update here too for safety */
+  header#navbar.expanded #mainNav li {
     display: block !important;
     width: 100%;
     border-bottom: none !important;
@@ -171,8 +172,8 @@
   /* LINK WIDTH FIX: Inline-block makes hover/active border fit text */
   #navbar.expanded #mainNav a.top-link {
     font-size: 0.95rem;
-    padding: 0.4rem 0.5rem; /* Standard desktop-like padding */
-    display: inline-block;  /* Key change: Only takes necessary width */
+    padding: 0.4rem 0.5rem; 
+    display: inline-block;  
     width: auto;
     text-align: left; 
     text-shadow: 0 1px 2px rgba(0,0,0,0.1); 

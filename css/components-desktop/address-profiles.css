@@ -70,13 +70,13 @@
 }
 
 /* =========================
-   PROFILE LINKS (logos only)
+   PROFILE LINKS (Updated to Flexbox)
 ========================= */
 .profile-links {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  /* Changed from Grid to Flex to force horizontal layout */
+  display: flex;
+  flex-wrap: wrap; 
   justify-content: center;
-  justify-items: center;
   align-items: center;
   gap: 1.5rem;
   margin-top: 1rem;
@@ -114,7 +114,3 @@
 .dark .profile-logo {
   filter: brightness(0.9) contrast(1.1);
 }
-
-/* =========================
-   RESPONSIVE ADJUSTMENTS
-========================= */

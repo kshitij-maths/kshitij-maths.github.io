@@ -7,7 +7,8 @@
   align-items: flex-start;
   justify-content: center;
   overflow: hidden;
-  /* Padding removed to use universal rule from base.css */
+  padding-top: var(--spacing-2xl);
+  padding-bottom: var(--spacing-2xl);
 }
 
 .hero-container {
@@ -24,7 +25,7 @@
   min-width: 260px;
 }
 
-/* --- FIXED-WIDTH WRAPPER TO PREVENT ROLE JUMP --- */
+/* --- FIXED-WIDTH WRAPPER --- */
 .hero-name {
   display: inline-block;
   width: 25rem;        
@@ -46,7 +47,7 @@
   transform: none;
 }
 
-/* --- HINDI SCALE-X ONLY (widen horizontally) --- */
+/* --- HINDI SCALE-X ONLY --- */
 .hero-name.hindi .name-inner {
   transform: scaleX(1.25);   
   transform-origin: left;
@@ -56,6 +57,22 @@
 .hero-role {
   font-size: 1rem;
   margin-top: 0; 
+  margin-bottom: 0.5rem;
+}
+
+/* NEW CONTACT INFO STYLING */
+.hero-contact-info {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  line-height: 1.5;
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--primary-color);
+}
+
+.dark .hero-contact-info {
+  color: var(--text-dark);
+  border-left-color: var(--primary-color-dark);
 }
 
 .hero-image {
