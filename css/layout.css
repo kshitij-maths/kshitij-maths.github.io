@@ -90,36 +90,98 @@ header#navbar .container::after {
   opacity: 0.8;
 }
 
-@keyframes border-travel { 0% { background-position: 0% 0%; } 100% { background-position: 400% 0%; } }
+@keyframes border-travel { 0% {background-position: 0% 0%; } 100% { background-position: 400% 0%; } }
 @keyframes flicker { 0% { opacity: 0.25; } 25% { opacity: 0.6; } 50% { opacity: 0.3; } 75% { opacity: 0.7; } 100% { opacity: 0.4; } }
 
 /* =========================
    NAV LINKS & BUTTONS
 ========================= */
-header#navbar nav { display: flex; align-items: center; margin: 0; padding: 0; }
-header#navbar nav ul { display: flex; gap: 1.65rem; align-items: center; margin: 0; padding: 0; list-style: none; flex-wrap: wrap; }
-header#navbar nav ul li { display: flex; align-items: center; }
+header#navbar nav { 
+display: flex;
+align-items: center;
+margin: 0;
+padding: 0; }
+
+
+header#navbar nav ul {
+  display: flex;
+  gap: 1.65rem;
+  align-items: center;
+  margin: 0; padding: 0;
+  list-style: none;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+header#navbar nav ul li {
+  display: flex;
+  align-items: center;
+}
 
 header#navbar nav a.top-link {
   display: flex; align-items: center; justify-content: center;
   padding: 0.35rem 0.5rem; font-size: 0.875rem; font-weight: 500; line-height: 1;
   color: var(--text-light); text-decoration: none; border-radius: 6px; transition: color 0.2s, border-color 0.3s;
 }
-header#navbar nav a.top-link:hover { color: var(--primary-color); }
-header#navbar nav a.top-link.active { border-bottom: 2px solid var(--primary-color); padding-bottom: calc(0.35rem - 2px); }
-.dark header#navbar nav a.top-link { color: var(--text-dark); }
-.dark header#navbar nav a.top-link:hover { color: var(--primary-color-dark); }
-.dark header#navbar nav a.top-link.active { border-bottom-color: var(--primary-color-dark); }
+
+header#navbar nav a.top-link:hover {
+  color: var(--primary-color);
+}
+
+header#navbar nav a.top-link.active {
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: calc(0.35rem - 2px);
+}
+
+.dark header#navbar nav a.top-link {
+  color: var(--text-dark);
+}
+
+.dark header#navbar nav a.top-link:hover {
+  color: var(--primary-color-dark);
+}
+
+.dark header#navbar nav a.top-link.active {
+  border-bottom-color: var(--primary-color-dark);
+}
 
 .theme-button {
-  background: none; border: none; padding: 0.3rem; margin: 0; font-size: 1.4rem; line-height: 1;
-  cursor: pointer; border-radius: 50%; color: var(--text-light); display: flex; align-items: center; justify-content: center;
+  background: none;
+  border: none;
+  padding: 0.3rem;
+  margin: 0;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 50%;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: color 0.3s ease, transform 0.2s ease;
 }
-.theme-button:hover { transform: rotate(20deg) scale(1.1); color: var(--primary-color); }
-.dark .theme-button { color: var(--text-dark); }
-.dark .theme-button:hover { color: var(--primary-color-dark); }
-.theme-toggle-wrapper { margin-left: auto; flex-shrink: 0; display: flex; align-items: center; height: 100%; }
+
+
+.theme-button:hover {
+  transform: rotate(20deg) scale(1.1);
+  color: var(--primary-color);
+}
+
+
+.dark .theme-button {
+  color: var(--text-dark);
+}
+
+.dark .theme-button:hover {
+  color: var(--primary-color-dark);
+}
+
+
+.theme-toggle-wrapper {
+  margin-left: auto;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
 
 /* =========================
    MAIN CONTENT & FOOTER
@@ -180,7 +242,6 @@ body {
 .profile-card-single {
   flex: 1; /* Share width equally */
   text-align: center;
-  /* Removed fixed max-width/margins so flex controls size */
   background: transparent !important;
   box-shadow: none !important;
   border: none !important;
@@ -217,7 +278,7 @@ body {
 }
 
 /* =========================
-   QUOTE CARD OVERRIDES
+   QUOTE CARD
 ========================= */
 .quote-card {
   flex: 1; 
