@@ -10,6 +10,18 @@
   <link rel="stylesheet" href="css/style.css" />
 
   <link rel="icon" href="data:,">
+  
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+     (function(){
+        emailjs.init({
+          publicKey: "0W91ccEH45SYhjMui", // Your Public Key
+        });
+     })();
+  </script>
+
 </head>
 <body>
 
@@ -112,6 +124,7 @@
     import { initContactForm } from "./js/initContactForm.js";
     import { initPopAnimations } from "./js/initPopAnimations.js";
     import { initMobileNavbar } from "./js/initMobileNavbar.js";
+    import { initMobileTimelineLine } from "./js/initMobileTimelineLine.js"; // Added back
 
     window.initDarkMode = initDarkMode;
     window.initNavigation = initNavigation;
@@ -121,6 +134,7 @@
     window.initContactForm = initContactForm;
     window.initPopAnimations = initPopAnimations;
     window.initMobileNavbar = initMobileNavbar;
+    window.initMobileTimelineLine = initMobileTimelineLine;
 
     window.addEventListener("DOMContentLoaded", async () => {
       console.log("🌐 DOM loaded, fetching sections...");

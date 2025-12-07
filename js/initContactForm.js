@@ -1,5 +1,5 @@
 // ================================
-// initContactForm.js (Final for GitHub Pages)
+// initContactForm.js
 // ================================
 export function initContactForm() {
   const form = document.getElementById("contactForm");
@@ -19,6 +19,7 @@ export function initContactForm() {
     const email = form.email.value.trim();
     const message = form.message.value.trim();
 
+    // Field Validation
     if (!name) {
       document.getElementById("nameError").textContent = "Please enter your name";
       document.getElementById("nameError").style.display = "block";
@@ -35,59 +36,70 @@ export function initContactForm() {
       isValid = false;
     }
 
+    //reCAPTCHA Validation ---
+    // This gets the token from Google. If empty, the user didn't check the box.
+    const captchaResponse = grecaptcha.getResponse();
+    
+    if (captchaResponse.length === 0) {
+      const captchaError = document.getElementById("messageError"); 
+      captchaError.textContent = "Please verify you are not a robot.";
+      captchaError.style.display = "block";
+      isValid = false;
+    }
+
     if (!isValid) return;
 
-    // 3. Send to Formspree
+    // 3. Send via EmailJS
     const sendBtn = form.querySelector('.send-btn');
     const originalBtnText = sendBtn.textContent;
     sendBtn.textContent = "Sending...";
     sendBtn.disabled = true;
 
-    // Your specific endpoint
-    const endpoint = "https://formspree.io/f/xovgnqlv";
+    // --- CONFIGURATION ---
+    const serviceID = "service_p2j1kfl";
+    const templateID = "template_o8qipet";
 
-    fetch(endpoint, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ 
-        name: name,
-        email: email,
-        message: message 
-      }),
-    })
-    .then(response => {
-      if (response.ok) {
+    const templateParams = {
+      name: name,
+      email: email,
+      message: message,
+      'g-recaptcha-response': captchaResponse // Send token to EmailJS for verification
+    };
+
+    emailjs.send(serviceID, templateID, templateParams)
+      .then(() => {
         // Success
         successMsg.textContent = "Your Message is Sent";
         successMsg.style.display = "block";
         successMsg.style.color = "#166534";
         successMsg.style.backgroundColor = "#dcfce7";
+        
         form.reset();
+        grecaptcha.reset(); // Reset the captcha so it can be used again
+        
         setTimeout(() => successMsg.style.display = "none", 4000);
-      } else {
-        // Error from Formspree
-        return response.json().then(data => {
-          if (Object.hasOwn(data, 'errors')) {
-            throw new Error(data.errors.map(error => error.message).join(", "));
-          } else {
-            throw new Error('Oops! There was a problem submitting your form');
-          }
-        });
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      successMsg.textContent = "Failed to send: " + error.message;
-      successMsg.style.display = "block";
-      successMsg.style.color = "#991b1b";
-      successMsg.style.backgroundColor = "#fee2e2";
-    })
-    .finally(() => {
-      sendBtn.textContent = originalBtnText;
-      sendBtn.disabled = false;
-    });
+      })
+      .catch((error) => {
+        console.error('FAILED...', error);
+        
+        let errorText = "Failed to send message.";
+        // Check for specific error text regarding limits or security
+        if (error.text && error.text.includes("limit")) {
+             errorText = "Monthly limit reached. Please email me directly.";
+        }
+        // Check for reCAPTCHA specific error
+        if (error.text && error.text.includes("reCAPTCHA")) {
+             errorText = "reCAPTCHA verification failed. Please try again.";
+        }
+
+        successMsg.textContent = errorText;
+        successMsg.style.display = "block";
+        successMsg.style.color = "#991b1b";
+        successMsg.style.backgroundColor = "#fee2e2";
+      })
+      .finally(() => {
+        sendBtn.textContent = originalBtnText;
+        sendBtn.disabled = false;
+      });
   });
 }
