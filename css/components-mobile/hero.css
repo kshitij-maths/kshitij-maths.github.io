@@ -11,14 +11,34 @@
 
   .hero-text, .hero-image {
     width: 100%;
-    margin-left: 0;   /* reset mobile spacing */
+    margin-left: 0;
+  }
+
+  .hero-content-wrapper {
+    display: inline-block;
+    text-align: left;
+    max-width: 100%;
   }
 
   .hero-name {
-    width: 100%;      /* auto width for mobile */
+    width: auto;
+    overflow: visible;
   }
 
   .hero-name.hindi .name-inner {
-    transform-origin: center;
+    transform-origin: left;
+  }
+
+  .hero-name.english .name-inner {
+    transform: scaleX(1.07);
+    transform-origin: left;
+    display: inline-block;
+  }
+
+  .hero-contact-info {
+    display: block;
+    text-align: left;
+    margin-top: 1rem;
+    margin-left: 0;
   }
 }
