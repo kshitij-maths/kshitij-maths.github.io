@@ -3,8 +3,12 @@
 // ================================
 import { initMobileNavbar } from "./initMobileNavbar.js";
 import { initMobileTimelineLine } from "./initMobileTimelineLine.js";
+import { initEmailProtection } from "./initEmailProtection.js";
 
 export async function loadSections() {
+  // List of sections to load dynamically
+  // Note: address-profiles.html, quote.html, and footer.html are now 
+  // hardcoded in index.html for fixed layout reasons.
   const sections = [
     "hero.html",
     "about.html",
@@ -30,8 +34,10 @@ export async function loadSections() {
   }
 
   console.log("🚀 Initializing dynamic features...");
+  // Use requestAnimationFrame to ensure DOM is ready before init
   requestAnimationFrame(() => initializeDynamicContent());
   
+  // Adjust body padding to account for fixed footer height
   adjustFooterPadding();
   window.addEventListener('resize', adjustFooterPadding);
 }
@@ -39,30 +45,38 @@ export async function loadSections() {
 function adjustFooterPadding() {
   const footer = document.getElementById("fixed-footer");
   if (footer) {
-    document.body.style.paddingBottom = footer.offsetHeight + "px";
+    // Add extra padding to body so footer doesn't cover content
+    document.body.style.paddingBottom = (footer.offsetHeight + 20) + "px";
   }
 }
 
 function initializeDynamicContent() {
+  // 1. Text & Scroll Effects
   if (typeof window.initHeroTicker === "function") window.initHeroTicker();
   if (typeof window.initScrollSpy === "function") window.initScrollSpy();
+  if (typeof window.initPopAnimations === "function") window.initPopAnimations();
+
+  // 2. Functional Modules
   if (typeof window.initResearchFilters === "function") window.initResearchFilters();
-  if (typeof window.initDarkMode === "function") window.initDarkMode();
-  if (typeof window.initNavigation === "function") window.initNavigation();
   if (typeof window.initContactForm === "function") window.initContactForm();
   
-  if (typeof window.initPopAnimations === "function") {
-    window.initPopAnimations();
-  }
+  // 3. UI/UX Modules
+  if (typeof window.initDarkMode === "function") window.initDarkMode();
+  if (typeof window.initNavigation === "function") window.initNavigation();
 
-  document.querySelectorAll(".animate-fadeIn").forEach(el => {
-    el.classList.add("fade-in-start");
-  });
-
+  // 4. Mobile Specifics
   if (typeof window.initMobileNavbar === "function") {
     window.initMobileNavbar();
   }
+  if (typeof window.initMobileTimelineLine === "function") {
+    window.initMobileTimelineLine();
+  }
 
-  // FIXED: Restored this call so the vertical line appears
-  initMobileTimelineLine();
+  // 5. Security Features
+  initEmailProtection();
+
+  // 6. Global Animations
+  document.querySelectorAll(".animate-fadeIn").forEach(el => {
+    el.classList.add("fade-in-start");
+  });
 }

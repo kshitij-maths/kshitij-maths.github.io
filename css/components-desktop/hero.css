@@ -25,7 +25,6 @@
   min-width: 260px;
 }
 
-/* --- FIXED-WIDTH WRAPPER --- */
 .hero-name {
   display: inline-block;
   width: 25rem;        
@@ -42,12 +41,10 @@
   color: #60a5fa;
 }
 
-/* --- ENGLISH NORMAL --- */
 .hero-name.english .name-inner {
   transform: none;
 }
 
-/* --- HINDI SCALE-X ONLY --- */
 .hero-name.hindi .name-inner {
   transform: scaleX(1.25);   
   transform-origin: left;
@@ -60,7 +57,6 @@
   margin-bottom: 0.5rem;
 }
 
-/* NEW CONTACT INFO STYLING */
 .hero-contact-info {
   font-size: 0.95rem;
   color: var(--text-light);
@@ -94,3 +90,56 @@
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   transition: box-shadow 0.3s;
 }
+
+.email-reveal-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #2563eb;
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  display: inline-block;
+}
+
+.email-reveal-btn:hover {
+  color: #3b82f6;
+}
+
+.dark .email-reveal-btn {
+  color: #60a5fa;
+}
+
+#secure-email-container {
+  position: relative;
+  display: inline-block;
+}
+
+#email-captcha-box {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  
+  background: white;
+  padding: 5px;
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  min-width: 160px; 
+}
+
+.dark #email-captcha-box {
+  background: #2d2d2d;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.unselectable-email {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
