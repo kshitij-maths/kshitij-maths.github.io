@@ -110,7 +110,7 @@
 
   <footer id="fixed-footer">
     <div class="container">
-      &copy; 2025 Dr. Kshitij Kumar Pandey. All rights reserved.
+      &copy; <span id="year"></span> Dr. Kshitij Kumar Pandey. All rights reserved.
     </div>
   </footer>
 
@@ -124,7 +124,7 @@
     import { initContactForm } from "./js/initContactForm.js";
     import { initPopAnimations } from "./js/initPopAnimations.js";
     import { initMobileNavbar } from "./js/initMobileNavbar.js";
-    import { initMobileTimelineLine } from "./js/initMobileTimelineLine.js"; // Added back
+    import { initMobileTimelineLine } from "./js/initMobileTimelineLine.js";
 
     window.initDarkMode = initDarkMode;
     window.initNavigation = initNavigation;
@@ -140,6 +140,7 @@
       console.log("🌐 DOM loaded, fetching sections...");
       await loadSections();
       console.log("✅ All sections fetched successfully.");
+      document.getElementById("year").textContent = new Date().getFullYear();
     });
   </script>
 </body>
