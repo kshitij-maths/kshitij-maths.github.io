@@ -16,8 +16,7 @@ export async function loadSections() {
     "research.html",
     "teaching.html",
     "honours.html",
-    "events.html",
-    "contact.html" 
+    "events.html"
   ];
 
   const main = document.getElementById("mainContent");
@@ -33,6 +32,8 @@ export async function loadSections() {
     }
   }
 
+const loader = document.getElementById("loadingIndicator");
+  if (loader) loader.remove();
   console.log("🚀 Initializing dynamic features...");
   // Use requestAnimationFrame to ensure DOM is ready before init
   requestAnimationFrame(() => initializeDynamicContent());

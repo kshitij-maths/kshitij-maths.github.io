@@ -43,13 +43,19 @@ header#navbar .container {
   justify-content: space-between;
   gap: 1rem;
   padding: 0.75rem 2rem; 
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* Keeps everything on one line */
   background-color: var(--navbar-bg-color);
   border-radius: 1rem;
   margin: 0 0.5rem;
   overflow: hidden;
   z-index: 1;
   transition: box-shadow 0.3s ease;
+}
+
+/* Balances the left side so the nav perfectly centers */
+.logo {
+  flex: 1;
+  display: block;
 }
 
 @media (max-width: 768px) {
@@ -103,39 +109,51 @@ header#navbar .container::after {
    NAV LINKS & BUTTONS
 ========================= */
 header#navbar nav { 
-display: flex;
-align-items: center;
-margin: 0;
-padding: 0; }
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 1 auto;
+  margin: 0;
+  padding: 0; 
+}
 
 header#navbar nav ul {
   display: flex;
-  gap: 1.5rem;
+  gap: 2.5rem; /* INCREASED: Gives links lots of breathing room on large screens */
   align-items: center;
-  margin: 0; padding: 0;
+  justify-content: center;
+  margin: 0; 
+  padding: 0;
   list-style: none;
-  flex-wrap: wrap;
-  margin-top: 1rem;
+  flex-wrap: nowrap; 
 }
+
 header#navbar nav ul li {
   display: flex;
   align-items: center;
 }
 
 header#navbar nav a.top-link {
-  display: flex; align-items: center; justify-content: center;
-  padding: 0.35rem 0.5rem; font-size: 0.875rem; font-weight: 500; line-height: 1;
-  color: var(--text-light); text-decoration: none; border-radius: 6px; transition: color 0.2s, border-color 0.3s;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  padding: 0.5rem; /* SYMMETRIC: Helps with vertical alignment */
+  font-size: 1rem; /* Slightly larger text for desktop */
+  font-weight: 500; 
+  line-height: normal; /* FIXED: 'normal' centers the font properly instead of '1' */
+  color: var(--text-light); 
+  text-decoration: none; 
+  border-radius: 6px; 
+  transition: color 0.2s, box-shadow 0.3s;
 }
 
 header#navbar nav a.top-link:hover {
   color: var(--primary-color);
 }
 
+/* FIXED: Using box-shadow instead of border-bottom prevents the text from shifting upward when active */
 header#navbar nav a.top-link.active {
-  border-bottom: 2px solid var(--primary-color);
-  padding-bottom: calc(0.35rem - 2px);
+  box-shadow: 0 2px 0 0 var(--primary-color);
 }
 
 .dark header#navbar nav a.top-link {
@@ -147,7 +165,7 @@ header#navbar nav a.top-link.active {
 }
 
 .dark header#navbar nav a.top-link.active {
-  border-bottom-color: var(--primary-color-dark);
+  box-shadow: 0 2px 0 0 var(--primary-color-dark);
 }
 
 .theme-button {
@@ -166,12 +184,10 @@ header#navbar nav a.top-link.active {
   transition: color 0.3s ease, transform 0.2s ease;
 }
 
-
 .theme-button:hover {
   transform: rotate(20deg) scale(1.1);
   color: var(--primary-color);
 }
-
 
 .dark .theme-button {
   color: var(--text-dark);
@@ -181,12 +197,25 @@ header#navbar nav a.top-link.active {
   color: var(--primary-color-dark);
 }
 
-
 .theme-toggle-wrapper {
-  margin-left: auto;
-  flex-shrink: 0;
+  flex: 1; 
   display: flex;
   align-items: center;
+  justify-content: flex-end; 
+}
+
+/* Responsive scaling for laptop screens (11" - 14") */
+@media (min-width: 769px) and (max-width: 1200px) {
+  header#navbar .container {
+    padding: 0.75rem 1.5rem; 
+  }
+  header#navbar nav ul {
+    gap: 1.25rem; /* Better breathing room for 13" MacBooks */
+  }
+  header#navbar nav a.top-link {
+    font-size: 0.9rem; /* Slightly smaller text to prevent overlapping */
+    padding: 0.4rem;
+  }
 }
 
 /* =========================
@@ -246,7 +275,7 @@ body {
    PROFILES CARD STYLES
 ========================= */
 .profile-card-single {
-  flex: 1; /* Share width equally */
+  flex: 1; 
   text-align: center;
   background: transparent !important;
   box-shadow: none !important;
@@ -290,15 +319,12 @@ body {
   flex: 1; 
   margin: 0 !important; 
   max-width: none !important;
-  
-  /* MATCHING TRANSPARENCY & REDUCED PADDING */
   background: transparent !important;
   box-shadow: none !important;
   border: none !important;
-  padding: 1rem 0 !important; /* Reduced padding from 3rem to 1rem */
+  padding: 1rem 0 !important; 
 }
 
-/* REDUCED FONT SIZE for Quote Text in Bottom Row */
 .bottom-row .quote-text {
   font-size: 1.1rem; 
 }

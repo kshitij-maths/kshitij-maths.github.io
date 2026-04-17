@@ -14,6 +14,7 @@
 .quote-card .math-symbol {
   position: absolute; color: rgba(255,165,0,0.35); font-weight: bold;
   z-index: 0; pointer-events: none; user-select: none;
+  will-change: transform;
 }
 
 @keyframes floatSlow {
@@ -30,4 +31,11 @@
 .quote-translation {
   color: #b71c1c; font-size: 1.125rem; font-weight: 500;
   margin-top: 0.5rem; position: relative; z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quote-card::before,
+  .quote-card .math-symbol {
+    animation: none !important;
+  }
 }
