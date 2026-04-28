@@ -1,57 +1,22 @@
 // ================================
 // initEmailProtection.js
+// Simple click-to-reveal — no external script dependency
 // ================================
 export function initEmailProtection() {
   const btn = document.getElementById('email-reveal-btn');
-  const container = document.getElementById('secure-email-container');
-  const captchaBox = document.getElementById('email-captcha-box'); 
-
-  if (!btn || !container || !captchaBox) return;
-
-  document.addEventListener('click', (e) => {
-    if (captchaBox.style.display === 'block' && 
-        !container.contains(e.target)) {
-      captchaBox.style.display = 'none';
-      btn.style.display = 'inline-block';
-      grecaptcha.reset();
-    }
-  });
+  if (!btn) return;
 
   btn.addEventListener('click', (e) => {
     e.preventDefault();
-    e.stopPropagation();
-    
-    if (typeof grecaptcha === 'undefined') {
-      alert("Security check is loading... please try again.");
-      return;
-    }
+    // Email is assembled in JS to deter HTML-scraping bots
+    const parts = ['kpandey', 'sissa', 'it'];
+    const mail  = parts[0] + '@' + parts[1] + '.' + parts[2];
 
-    btn.style.display = 'none';
-    captchaBox.style.display = 'block';
+    const link = document.createElement('a');
+    link.href      = 'mailto:' + mail;
+    link.textContent = mail;
+    link.className = 'text-blue-500 dark:text-blue-400 hover:underline';
 
-    captchaBox.innerHTML = ''; 
-
-    try {
-      grecaptcha.render(captchaBox, {
-        'sitekey': '6LezRCQsAAAAAEHBalDdbup4up_jMhgh4XPZz3hE',
-        'callback': function(response) {
-          const u = 'kpandey';
-          const d = 'sissa.it';
-          const mail = u + '@' + d;
-
-          captchaBox.style.display = 'none';
-          
-          const link = document.createElement('a');
-          link.href = `mailto:${mail}`;
-          // Added 'unselectable-email' class here
-          link.className = "text-blue-500 dark:text-blue-400 hover:underline unselectable-email";
-          link.textContent = mail;
-          
-          btn.replaceWith(link);
-        }
-      });
-    } catch (err) {
-      console.error("Captcha render error:", err);
-    }
+    btn.replaceWith(link);
   });
 }

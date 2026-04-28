@@ -1,9 +1,0 @@
-/* =========================
-   MOBILE STYLES - CONTACT.CSS
-========================= */
-/* No mobile-specific styles for contact.css */
-@media (max-width: 768px) {
-.contact-card {
-  max-width: 270px;
-}
-}

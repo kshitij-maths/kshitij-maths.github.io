@@ -1,13 +1,13 @@
 /* =========================
    CARDS & BUTTONS
    ========================= */
-.card, .contact-card, .quote-card {
+.card, .quote-card {
   border-radius: 1rem; padding: var(--spacing-xl);
   box-shadow: 0 5px 20px rgba(0,0,0,0.1);
   transition: background 0.4s, box-shadow 0.4s;
 }
 
-.dark .card, .dark .contact-card, .dark .quote-card {
+.dark .card, .dark .quote-card {
   box-shadow: 0 8px 30px rgba(255,255,255,0.05);
 }
 

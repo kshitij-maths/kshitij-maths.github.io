@@ -16,7 +16,7 @@ export function initScrollSpy() {
 
   function onScroll() {
     // Disable logic on mobile to prevent conflict with initMobileNavbar.js
-    if (window.innerWidth <= 768) return;
+    if (window.innerWidth <= 1024) return;
 
     const scrollY = window.scrollY;
     const viewportHeight = window.innerHeight;

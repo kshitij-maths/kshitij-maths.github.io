@@ -38,7 +38,7 @@ export function initMobileNavbar() {
   });
 
   function onScroll() {
-    if (window.innerWidth > 768) return;
+    if (window.innerWidth > 1024) return;
 
     let activeIndex = -1;
     const scrollY = window.scrollY;
@@ -120,7 +120,7 @@ export function initMobileNavbar() {
   window.addEventListener("scroll", onScroll, { passive: true });
   
   window.addEventListener("resize", () => {
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= 1024) {
       onScroll();
     } else {
       navbar.classList.remove("expanded");

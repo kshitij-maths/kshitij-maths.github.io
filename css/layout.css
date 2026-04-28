@@ -4,19 +4,20 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--spacing-4xl);
+  padding: 0 var(--spacing-4xl);   /* 5rem on each side */
 }
 
-@media (max-width: 1200px) {
-  .container {
-    padding: 0 var(--spacing-xl);
-  }
+@media (max-width: 1280px) {
+  .container { padding: 0 var(--spacing-xl); }   /* 2rem */
 }
 
 @media (max-width: 768px) {
-  .container {
-    padding: 0 var(--spacing-md);
-  }
+  .container { padding: 0 var(--spacing-md); }   /* 1rem */
+}
+
+/* Extra-large screens — allow wider content */
+@media (min-width: 1600px) {
+  .container { max-width: 1400px; }
 }
 
 /* =========================
@@ -39,44 +40,40 @@ header#navbar {
 header#navbar .container {
   position: relative;
   display: flex;
-  align-items: center; 
+  align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.75rem 2rem; 
-  flex-wrap: nowrap; /* Keeps everything on one line */
+  padding: 0.75rem 2rem;
+  flex-wrap: nowrap;
   background-color: var(--navbar-bg-color);
   border-radius: 1rem;
-  margin: 0 0.5rem;
+  /* Fix: use width + box-sizing so the bar never spills past the viewport */
+  box-sizing: border-box;
+  width: calc(100% - 1rem);
+  max-width: 1400px;
+  margin: 0.25rem auto;
   overflow: hidden;
   z-index: 1;
   transition: box-shadow 0.3s ease;
 }
 
-/* Balances the left side so the nav perfectly centers */
+/* Logo spacer — keeps nav centred */
 .logo {
   flex: 1;
   display: block;
 }
 
-@media (max-width: 768px) {
-  header#navbar .container {
-    padding: 1rem;
-    margin: 0;
-    border-radius: 0.75rem;
-  }
-}
-
 /* =========================
-   NAVBAR ANIMATIONS (NEON)
+   NAVBAR ANIMATIONS (NEON border)
 ========================= */
 header#navbar .container::before {
   content: "";
   position: absolute;
   inset: 0;
-  padding: 5px; 
+  padding: 5px;
   border-radius: inherit;
   pointer-events: none;
-  filter: blur(2.5px) brightness(1.2); 
+  filter: blur(2.5px) brightness(1.2);
   background: repeating-linear-gradient(90deg, var(--navbar-border-color), var(--navbar-border-color-glow) 20%, var(--navbar-border-color) 40%);
   background-size: 400% 400%;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -102,72 +99,57 @@ header#navbar .container::after {
   opacity: 0.8;
 }
 
-@keyframes border-travel { 0% {background-position: 0% 0%; } 100% { background-position: 400% 0%; } }
-@keyframes flicker { 0% { opacity: 0.25; } 25% { opacity: 0.6; } 50% { opacity: 0.3; } 75% { opacity: 0.7; } 100% { opacity: 0.4; } }
+@keyframes border-travel { 0%   { background-position: 0%   0%; } 100% { background-position: 400% 0%; } }
+@keyframes flicker        { 0%   { opacity: 0.25; } 25% { opacity: 0.6; } 50% { opacity: 0.3; } 75% { opacity: 0.7; } 100% { opacity: 0.4; } }
 
 /* =========================
-   NAV LINKS & BUTTONS
+   NAV LINKS
 ========================= */
-header#navbar nav { 
+header#navbar nav {
   display: flex;
   align-items: center;
   justify-content: center;
   flex: 0 1 auto;
+  min-width: 0;        /* allow shrinking */
   margin: 0;
-  padding: 0; 
+  padding: 0;
 }
 
 header#navbar nav ul {
   display: flex;
-  gap: 2.5rem; /* INCREASED: Gives links lots of breathing room on large screens */
+  gap: 2rem;
   align-items: center;
   justify-content: center;
-  margin: 0; 
+  margin: 0;
   padding: 0;
   list-style: none;
-  flex-wrap: nowrap; 
+  flex-wrap: nowrap;
 }
 
-header#navbar nav ul li {
-  display: flex;
-  align-items: center;
-}
+header#navbar nav ul li { display: flex; align-items: center; }
 
 header#navbar nav a.top-link {
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
   justify-content: center;
-  padding: 0.5rem; /* SYMMETRIC: Helps with vertical alignment */
-  font-size: 1rem; /* Slightly larger text for desktop */
-  font-weight: 500; 
-  line-height: normal; /* FIXED: 'normal' centers the font properly instead of '1' */
-  color: var(--text-light); 
-  text-decoration: none; 
-  border-radius: 6px; 
+  padding: 0.5rem 0.25rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--text-light);
+  text-decoration: none;
+  border-radius: 6px;
+  white-space: nowrap;
   transition: color 0.2s, box-shadow 0.3s;
 }
 
-header#navbar nav a.top-link:hover {
-  color: var(--primary-color);
-}
+header#navbar nav a.top-link:hover        { color: var(--primary-color); }
+header#navbar nav a.top-link.active       { box-shadow: 0 2px 0 0 var(--primary-color); }
+.dark header#navbar nav a.top-link        { color: var(--text-dark); }
+.dark header#navbar nav a.top-link:hover  { color: var(--primary-color-dark); }
+.dark header#navbar nav a.top-link.active { box-shadow: 0 2px 0 0 var(--primary-color-dark); }
 
-/* FIXED: Using box-shadow instead of border-bottom prevents the text from shifting upward when active */
-header#navbar nav a.top-link.active {
-  box-shadow: 0 2px 0 0 var(--primary-color);
-}
-
-.dark header#navbar nav a.top-link {
-  color: var(--text-dark);
-}
-
-.dark header#navbar nav a.top-link:hover {
-  color: var(--primary-color-dark);
-}
-
-.dark header#navbar nav a.top-link.active {
-  box-shadow: 0 2px 0 0 var(--primary-color-dark);
-}
-
+/* --- Theme toggle button --- */
 .theme-button {
   background: none;
   border: none;
@@ -184,38 +166,38 @@ header#navbar nav a.top-link.active {
   transition: color 0.3s ease, transform 0.2s ease;
 }
 
-.theme-button:hover {
-  transform: rotate(20deg) scale(1.1);
-  color: var(--primary-color);
-}
-
-.dark .theme-button {
-  color: var(--text-dark);
-}
-
-.dark .theme-button:hover {
-  color: var(--primary-color-dark);
-}
+.theme-button:hover           { transform: rotate(20deg) scale(1.1); color: var(--primary-color); }
+.dark .theme-button           { color: var(--text-dark); }
+.dark .theme-button:hover     { color: var(--primary-color-dark); }
 
 .theme-toggle-wrapper {
-  flex: 1; 
+  flex: 1;
   display: flex;
   align-items: center;
-  justify-content: flex-end; 
+  justify-content: flex-end;
 }
 
-/* Responsive scaling for laptop screens (11" - 14") */
-@media (min-width: 769px) and (max-width: 1200px) {
-  header#navbar .container {
-    padding: 0.75rem 1.5rem; 
-  }
-  header#navbar nav ul {
-    gap: 1.25rem; /* Better breathing room for 13" MacBooks */
-  }
-  header#navbar nav a.top-link {
-    font-size: 0.9rem; /* Slightly smaller text to prevent overlapping */
-    padding: 0.4rem;
-  }
+/* ======================================================
+   DESKTOP NAVBAR RESPONSIVE BREAKPOINTS (> 1024 px)
+====================================================== */
+
+/* Large desktop (> 1440 px) — generous spacing */
+@media (min-width: 1441px) {
+  header#navbar nav ul { gap: 2.5rem; }
+  header#navbar nav a.top-link { font-size: 1rem; }
+}
+
+/* Standard desktop (1281 – 1440 px) — default above */
+@media (min-width: 1281px) and (max-width: 1440px) {
+  header#navbar nav ul { gap: 1.75rem; }
+  header#navbar nav a.top-link { font-size: 0.95rem; }
+}
+
+/* Mid desktop (1025 – 1280 px): 13" laptops — compact links */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  header#navbar .container { padding: 0.6rem 1.25rem; }
+  header#navbar nav ul { gap: 1rem; }
+  header#navbar nav a.top-link { font-size: 0.85rem; padding: 0.4rem 0.2rem; }
 }
 
 /* =========================
@@ -237,18 +219,17 @@ header#navbar nav a.top-link.active {
   z-index: 100;
   transition: background 0.4s;
 }
+
 .dark #fixed-footer {
   background: var(--card-bg-dark);
   border-top-color: rgba(255,255,255,0.05);
   color: #9ca3af;
 }
 
-body {
-  padding-bottom: 4rem; 
-}
+body { padding-bottom: 4rem; }
 
 /* =========================
-   BOTTOM INFO SECTION (Layout)
+   BOTTOM INFO SECTION
 ========================= */
 .bottom-row {
   display: flex;
@@ -258,13 +239,14 @@ body {
   width: 100%;
 }
 
+/* Tablet and below: stack vertically */
 @media (max-width: 900px) {
   .bottom-row {
     flex-direction: column;
     gap: 1.5rem;
   }
-  
-  .bottom-row .card, 
+
+  .bottom-row .card,
   .bottom-row .quote-card {
     width: 100% !important;
     max-width: 600px !important;
@@ -272,16 +254,15 @@ body {
 }
 
 /* =========================
-   PROFILES CARD STYLES
+   PROFILE CARD (footer bar)
 ========================= */
 .profile-card-single {
-  flex: 1; 
+  flex: 1;
   text-align: center;
   background: transparent !important;
   box-shadow: none !important;
   border: none !important;
-  padding: 0 !important; 
-  
+  padding: 0 !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -289,10 +270,10 @@ body {
 
 .profile-links-row {
   display: flex;
-  flex-wrap: nowrap; 
+  flex-wrap: nowrap;
   justify-content: center;
   gap: 0.8rem;
-  padding-bottom: 0.5rem; 
+  padding-bottom: 0.5rem;
   margin: 0 auto;
 }
 
@@ -302,38 +283,37 @@ body {
   flex-shrink: 0;
   transition: transform 0.2s;
 }
-.profile-links-row .profile-link:hover {
-  transform: scale(1.2);
-}
+
+.profile-links-row .profile-link:hover { transform: scale(1.2); }
 
 @media (max-width: 480px) {
-  .profile-links-row {
-    gap: 0.5rem; 
-  }
+  .profile-links-row { gap: 0.5rem; }
 }
 
 /* =========================
-   QUOTE CARD
+   QUOTE CARD (footer bar)
 ========================= */
 .quote-card {
-  flex: 1; 
-  margin: 0 !important; 
+  flex: 1;
+  margin: 0 !important;
   max-width: none !important;
   background: transparent !important;
   box-shadow: none !important;
   border: none !important;
-  padding: 1rem 0 !important; 
+  padding: 1rem 0 !important;
 }
 
-.bottom-row .quote-text {
-  font-size: 1.1rem; 
-}
-.bottom-row .quote-translation {
-  font-size: 0.9rem; 
-}
+.bottom-row .quote-text        { font-size: 1.1rem; }
+.bottom-row .quote-translation { font-size: 0.9rem; }
 
 /* =========================
-   ANIMATIONS
+   POP ANIMATIONS
 ========================= */
-.animate-pop { opacity: 0; transform: scale(0.95); transform-origin: center top; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.5s ease; }
+.animate-pop {
+  opacity: 0;
+  transform: scale(0.95);
+  transform-origin: center top;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+}
+
 .animate-pop.visible { opacity: 1; transform: scale(1); }

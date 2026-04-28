@@ -20,40 +20,38 @@
   gap: var(--spacing-4xl);
 }
 
-.hero-text {
+.hero-text  { width: 50%; min-width: 260px; }
+
+.hero-image {
   width: 45%;
-  min-width: 260px;
+  display: flex;
+  justify-content: center;
+  margin-left: 2rem;
 }
 
 .hero-name {
   display: inline-block;
-  width: 25rem;        
-  min-height: 2.2rem;    
-  overflow: hidden;    
+  width: 25rem;
+  min-height: 2.2rem;
+  overflow: hidden;
   font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 0.25rem; 
+  margin-bottom: 0.25rem;
   color: #1e40af;
   transition: color 0.8s ease-in-out;
 }
 
-.dark .hero-name {
-  color: #60a5fa;
-}
-
-.hero-name.english .name-inner {
-  transform: none;
-}
+.dark .hero-name { color: #60a5fa; }
 
 .hero-name.hindi .name-inner {
-  transform: scaleX(1.25);   
+  transform: scaleX(1.25);
   transform-origin: left;
   display: inline-block;
 }
 
 .hero-role {
   font-size: 1rem;
-  margin-top: 0; 
+  margin-top: 0;
   margin-bottom: 0.5rem;
 }
 
@@ -71,26 +69,21 @@
   border-left-color: var(--primary-color-dark);
 }
 
-.hero-image {
-  width: 45%;
-  display: flex;
-  justify-content: center;
-  margin-left: 4rem;          
-}
+/* Profile photo */
+.hero-image picture { display: contents; }
 
 .hero-image img {
   width: 300px;
   height: 300px;
   border-radius: 50%;
   object-fit: cover;
-  background: transparent;
-  background-clip: padding-box;
   mask-image: radial-gradient(circle, white 98%, transparent 100%);
   -webkit-mask-image: radial-gradient(circle, white 98%, transparent 100%);
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   transition: box-shadow 0.3s;
 }
 
+/* Email reveal button */
 .email-reveal-btn {
   background: none;
   border: none;
@@ -100,46 +93,36 @@
   cursor: pointer;
   font-family: inherit;
   font-size: inherit;
-  display: inline-block;
+  display: inline;
 }
 
-.email-reveal-btn:hover {
-  color: #3b82f6;
+.email-reveal-btn:hover  { color: #3b82f6; }
+.dark .email-reveal-btn  { color: #60a5fa; }
+
+/* =========================
+   TABLET  769 – 1024 px
+========================= */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-container {
+    gap: 2rem;
+  }
+
+  .hero-text  { width: 55%; }
+  .hero-image { width: 40%; margin-left: 1.5rem; }
+
+  .hero-image img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .hero-name { width: auto; font-size: 1.35rem; }
 }
 
-.dark .email-reveal-btn {
-  color: #60a5fa;
+/* =========================
+   SMALL LAPTOP  1025 – 1280 px
+========================= */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .hero-container { gap: 3rem; }
+  .hero-image img  { width: 260px; height: 260px; }
+  .hero-name       { width: 22rem; }
 }
-
-#secure-email-container {
-  position: relative;
-  display: inline-block;
-}
-
-#email-captcha-box {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  
-  background: white;
-  padding: 5px;
-  border-radius: 4px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  min-width: 160px; 
-}
-
-.dark #email-captcha-box {
-  background: #2d2d2d;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-}
-
-.unselectable-email {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-

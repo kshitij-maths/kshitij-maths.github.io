@@ -6,8 +6,8 @@ import { initMobileTimelineLine } from "./initMobileTimelineLine.js";
 import { initEmailProtection } from "./initEmailProtection.js";
 
 export async function loadSections() {
-  // List of sections to load dynamically
-  // Note: address-profiles.html, quote.html, and footer.html are now 
+  // Sections loaded in parallel for better performance.
+  // Note: address-profiles.html, quote.html, and footer.html are
   // hardcoded in index.html for fixed layout reasons.
   const sections = [
     "hero.html",
@@ -21,32 +21,36 @@ export async function loadSections() {
 
   const main = document.getElementById("mainContent");
 
-  for (let file of sections) {
-    try {
-      const response = await fetch(`sections/${file}`);
-      if (!response.ok) throw new Error(`Failed to load ${file}`);
-      const html = await response.text();
-      main.insertAdjacentHTML("beforeend", html);
-    } catch (err) {
-      console.error(err);
+  // Fetch all sections in parallel instead of sequentially
+  const responses = await Promise.all(
+    sections.map(file => fetch(`sections/${file}`))
+  );
+
+  for (let i = 0; i < sections.length; i++) {
+    const response = responses[i];
+    if (!response.ok) {
+      console.error(`Failed to load ${sections[i]}`);
+      continue;
     }
+    const html = await response.text();
+    main.insertAdjacentHTML("beforeend", html);
   }
 
-const loader = document.getElementById("loadingIndicator");
+  const loader = document.getElementById("loadingIndicator");
   if (loader) loader.remove();
+
   console.log("🚀 Initializing dynamic features...");
   // Use requestAnimationFrame to ensure DOM is ready before init
   requestAnimationFrame(() => initializeDynamicContent());
-  
+
   // Adjust body padding to account for fixed footer height
   adjustFooterPadding();
-  window.addEventListener('resize', adjustFooterPadding);
+  window.addEventListener("resize", adjustFooterPadding);
 }
 
 function adjustFooterPadding() {
   const footer = document.getElementById("fixed-footer");
   if (footer) {
-    // Add extra padding to body so footer doesn't cover content
     document.body.style.paddingBottom = (footer.offsetHeight + 20) + "px";
   }
 }
@@ -59,19 +63,14 @@ function initializeDynamicContent() {
 
   // 2. Functional Modules
   if (typeof window.initResearchFilters === "function") window.initResearchFilters();
-  if (typeof window.initContactForm === "function") window.initContactForm();
-  
+
   // 3. UI/UX Modules
   if (typeof window.initDarkMode === "function") window.initDarkMode();
   if (typeof window.initNavigation === "function") window.initNavigation();
 
   // 4. Mobile Specifics
-  if (typeof window.initMobileNavbar === "function") {
-    window.initMobileNavbar();
-  }
-  if (typeof window.initMobileTimelineLine === "function") {
-    window.initMobileTimelineLine();
-  }
+  if (typeof window.initMobileNavbar === "function") window.initMobileNavbar();
+  if (typeof window.initMobileTimelineLine === "function") window.initMobileTimelineLine();
 
   // 5. Security Features
   initEmailProtection();

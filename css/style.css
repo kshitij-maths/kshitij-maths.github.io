@@ -6,7 +6,6 @@
 
 /* Desktop Component Styles */
 @import './components-desktop/research.css';
-@import './components-desktop/contact.css';
 @import './components-desktop/hero.css';
 @import './components-desktop/address-profiles.css';
 @import './components-desktop/quote.css';
@@ -16,7 +15,6 @@
 /* Mobile Component Styles - Overrides desktop when needed */
 @import './components-mobile/navbar.css';
 @import './components-mobile/research.css';
-@import './components-mobile/contact.css';
 @import './components-mobile/hero.css';
 @import './components-mobile/address-profiles.css';
 @import './components-mobile/quote.css';

@@ -5,25 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dr. Kshitij Kumar Pandey</title>
   <meta name="description" content="Dr. Kshitij Kumar Pandey is a Postdoctoral Researcher at SISSA. His research focuses on approximation theory, splines, and fractal functions." />
+  <meta name="author" content="Dr. Kshitij Kumar Pandey" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <!-- Structured data for search engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Dr. Kshitij Kumar Pandey",
+    "jobTitle": "Postdoctoral Researcher",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "SISSA – International School for Advanced Studies",
+      "url": "https://www.sissa.it"
+    },
+    "url": "https://kshitij-maths.github.io",
+    "sameAs": [
+      "https://www.researchgate.net/profile/Kshitij-Pandey",
+      "https://scholar.google.com/citations?user=ND7KwA4AAAAJ&hl=en",
+      "https://orcid.org/0000-0003-1356-9290",
+      "https://github.com/kshitij-maths"
+    ]
+  }
+  </script>
+
+  <!-- Fonts: Lato (body), Pacifico (headings), Inter/Poppins (UI), Great Vibes (decorative) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&family=Lato:wght@400;700&family=Pacifico&family=Great+Vibes&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/layout.css" />
   <link rel="stylesheet" href="css/style.css" />
 
-  <link rel="icon" type="image/png" href="images/photo.jpg">
-  
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <link rel="icon" type="image/webp" href="images/photo.webp">
 
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script type="text/javascript">
-     (function(){
-        emailjs.init({
-          publicKey: "0W91ccEH45SYhjMui", // Your Public Key
-        });
-     })();
-  </script>
+  <!-- Tailwind CSS utility classes -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
 <body>
@@ -70,25 +86,25 @@
         
         <div class="card profile-card-single">
           <div class="profile-links-row">
-              <a href="https://www.researchgate.net/profile/Kshitij-Pandey" target="_blank" title="ResearchGate" class="profile-link">
+              <a href="https://www.researchgate.net/profile/Kshitij-Pandey" target="_blank" rel="noopener noreferrer" title="ResearchGate" class="profile-link">
                   <img src="images/rg-logo.png" class="profile-logo" alt="ResearchGate">
               </a>
-              <a href="https://github.com/kshitij-maths" target="_blank" title="GitHub" class="profile-link">
+              <a href="https://github.com/kshitij-maths" target="_blank" rel="noopener noreferrer" title="GitHub" class="profile-link">
                   <img src="images/github-logo.png" class="profile-logo" alt="GitHub">
               </a>
-              <a href="https://scholar.google.com/citations?user=ND7KwA4AAAAJ&hl=en" target="_blank" title="Google Scholar" class="profile-link">
+              <a href="https://scholar.google.com/citations?user=ND7KwA4AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" title="Google Scholar" class="profile-link">
                   <img src="images/gs-logo.png" class="profile-logo" alt="Google Scholar">
               </a>
-              <a href="https://www.scopus.com/authid/detail.uri?authorId=57221158052" target="_blank" title="Scopus" class="profile-link">
+              <a href="https://www.scopus.com/authid/detail.uri?authorId=57221158052" target="_blank" rel="noopener noreferrer" title="Scopus" class="profile-link">
                   <img src="images/scopus-logo.png" class="profile-logo" alt="Scopus">
               </a>
-              <a href="https://mathscinet.ams.org/mathscinet/author?authorId=1423365" target="_blank" title="MathSciNet" class="profile-link">
+              <a href="https://mathscinet.ams.org/mathscinet/author?authorId=1423365" target="_blank" rel="noopener noreferrer" title="MathSciNet" class="profile-link">
                   <img src="images/msn-logo.png" class="profile-logo" alt="MathSciNet">
               </a>
-              <a href="https://orcid.org/0000-0003-1356-9290" target="_blank" title="ORCID" class="profile-link">
+              <a href="https://orcid.org/0000-0003-1356-9290" target="_blank" rel="noopener noreferrer" title="ORCID" class="profile-link">
                   <img src="images/orcid-logo.png" class="profile-logo" alt="ORCID">
               </a>
-              <a href="https://huggingface.co/kshitij-pandey" target="_blank" title="Hugging Face" class="profile-link">
+              <a href="https://huggingface.co/kshitij-pandey" target="_blank" rel="noopener noreferrer" title="Hugging Face" class="profile-link">
                   <img src="images/hf-logo.png" class="profile-logo" alt="Hugging Face">
               </a>
           </div>
@@ -126,7 +142,6 @@
     import { initHeroTicker } from "./js/initHeroTicker.js";
     import { initScrollSpy } from "./js/initScrollSpy.js";
     import { initResearchFilters } from "./js/initResearchFilters.js";
-    import { initContactForm } from "./js/initContactForm.js";
     import { initPopAnimations } from "./js/initPopAnimations.js";
     import { initMobileNavbar } from "./js/initMobileNavbar.js";
     import { initMobileTimelineLine } from "./js/initMobileTimelineLine.js";
@@ -136,15 +151,12 @@
     window.initHeroTicker = initHeroTicker;
     window.initScrollSpy = initScrollSpy;
     window.initResearchFilters = initResearchFilters;
-    window.initContactForm = initContactForm;
     window.initPopAnimations = initPopAnimations;
     window.initMobileNavbar = initMobileNavbar;
     window.initMobileTimelineLine = initMobileTimelineLine;
 
     window.addEventListener("DOMContentLoaded", async () => {
-      console.log("🌐 DOM loaded, fetching sections...");
       await loadSections();
-      console.log("✅ All sections fetched successfully.");
       document.getElementById("year").textContent = new Date().getFullYear();
     });
   </script>

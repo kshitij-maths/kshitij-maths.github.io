@@ -1,55 +1,43 @@
 // ================================
-// initMobileTimelineLine.js
+// initTimelineLine.js  (works for all screen sizes)
+// Uses getBoundingClientRect() to position the vertical line so it
+// passes exactly through the centre of the first and last marker.
 // ================================
-
 export function initMobileTimelineLine() {
   const timelines = document.querySelectorAll('.timeline');
   if (!timelines.length) return;
 
-  // Function to calculate and apply line positions
   const updateTimeline = (timeline) => {
-    // Only run on mobile
-    if (window.innerWidth > 768) {
-        timeline.style.removeProperty('--line-top');
-        timeline.style.removeProperty('--line-bottom');
-        return;
-    }
-
     const markers = timeline.querySelectorAll('.timeline-marker');
     if (markers.length < 2) return;
 
-    // Get reference positions
-    const first = markers[0].getBoundingClientRect();
-    const container = timeline.getBoundingClientRect();
-    
-    // Get the last item's bounding box (to encompass the text content)
-    const items = timeline.querySelectorAll('.timeline-item');
-    const lastItem = items[items.length - 1];
-    const lastRect = lastItem.getBoundingClientRect();
+    const first = markers[0];
+    const last  = markers[markers.length - 1];
+    const box   = timeline.getBoundingClientRect();
 
-    // Calculate Offsets
-    // Start: Center of first marker
-    const topOffset = first.top - container.top + (first.height / 2);
-    
-    // End: Bottom of the last content item (matches "Institute" level)
-    const bottomOffset = lastRect.bottom - container.top;
+    const firstBox = first.getBoundingClientRect();
+    const lastBox  = last.getBoundingClientRect();
 
-    timeline.style.setProperty('--line-top', `${topOffset}px`);
-    timeline.style.setProperty('--line-bottom', `${bottomOffset}px`);
+    // Vertical: from centre of first marker to centre of last marker
+    const lineTop    = firstBox.top  - box.top  + firstBox.height / 2;
+    const lineBottom = lastBox.top   - box.top  + lastBox.height  / 2;
+
+    // Horizontal: centre of the marker column (same for all markers)
+    const lineX = firstBox.left - box.left + firstBox.width / 2;
+
+    timeline.style.setProperty('--line-top',    `${lineTop}px`);
+    timeline.style.setProperty('--line-height', `${lineBottom - lineTop}px`);
+    timeline.style.setProperty('--line-x',      `${lineX}px`);
   };
 
-  // 1. Initial Calculation
+  // Initial calculation (called after sections are injected into DOM)
   timelines.forEach(updateTimeline);
 
-  // 2. Observe for layout changes (fixes "First Load" issue)
-  const observer = new ResizeObserver((entries) => {
+  // Recalculate whenever layout changes (font load, images, resize)
+  const observer = new ResizeObserver(entries => {
     entries.forEach(entry => updateTimeline(entry.target));
   });
-  
-  timelines.forEach(timeline => observer.observe(timeline));
+  timelines.forEach(t => observer.observe(t));
 
-  // 3. Window Resize Fallback
-  window.addEventListener("resize", () => {
-    timelines.forEach(updateTimeline);
-  });
+  window.addEventListener('resize', () => timelines.forEach(updateTimeline), { passive: true });
 }
