@@ -4,6 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dr. Kshitij Kumar Pandey</title>
+    <script>
+      (function () {
+        const theme = localStorage.getItem("theme") || "auto";
+        if (
+          theme === "dark" ||
+          (theme === "auto" && window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      })();
+    </script>
     <meta
       name="description"
       content="Dr. Kshitij Kumar Pandey is a Postdoctoral Researcher at SISSA. His research focuses on approximation theory, splines, and fractal functions."
@@ -40,8 +53,8 @@
 
 
     <link rel="icon" type="image/webp" href="/assets/photo-lO-BFSvV.webp" />
-    <script type="module" crossorigin src="/assets/index-BaUqit9p.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-3SQtpCob.css">
+    <script type="module" crossorigin src="/assets/index-CB_3t5De.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CH4EepF7.css">
   </head>
   <body>
     <header id="navbar">
