@@ -1,49 +1,75 @@
 // ================================
 // initTimelineLine.js  (works for all screen sizes)
-// Uses getBoundingClientRect() to position the vertical line so it
-// passes exactly through the centre of the first and last marker.
+// Draws one segment per gap between adjacent markers so the line just
+// touches the bottom of the upper circle and the top of the lower one.
 // ================================
+
+function snapToPixel(value) {
+  const dpr = window.devicePixelRatio || 1;
+  return Math.round(value * dpr) / dpr;
+}
+
 export function initMobileTimelineLine() {
   const timelines = document.querySelectorAll('.timeline');
   if (!timelines.length) return;
-  const snapToDevicePixel = (value) => {
-    const dpr = window.devicePixelRatio || 1;
-    return Math.round(value * dpr) / dpr;
-  };
 
   const updateTimeline = (timeline) => {
-    const markers = timeline.querySelectorAll('.timeline-marker');
+    timeline.querySelectorAll('.timeline-segment').forEach(el => el.remove());
+
+    const markers = [...timeline.querySelectorAll('.timeline-marker')];
     if (markers.length < 2) return;
 
-    const first = markers[0];
-    const last  = markers[markers.length - 1];
-    const box   = timeline.getBoundingClientRect();
+    const box = timeline.getBoundingClientRect();
+    const lineWidth = parseFloat(
+      getComputedStyle(timeline).getPropertyValue('--timeline-line-width')
+    ) || 3;
 
-    const firstBox = first.getBoundingClientRect();
-    const lastBox  = last.getBoundingClientRect();
+    const firstBox = markers[0].getBoundingClientRect();
+    const lineX = snapToPixel(firstBox.left - box.left + firstBox.width / 2);
 
-    // Vertical: from bottom edge of top marker to top edge of bottom marker
-    const lineTop = snapToDevicePixel(firstBox.bottom - box.top);
-    const lineBottom = snapToDevicePixel(lastBox.top - box.top);
-    const lineHeight = Math.max(0, lineBottom - lineTop);
+    for (let i = 0; i < markers.length - 1; i++) {
+      const curr = markers[i].getBoundingClientRect();
+      const next = markers[i + 1].getBoundingClientRect();
 
-    // Horizontal: centre of the marker column (same for all markers)
-    const lineX = snapToDevicePixel(firstBox.left - box.left + firstBox.width / 2);
+      const top = snapToPixel(curr.bottom - box.top);
+      const height = Math.max(0, next.top - curr.bottom);
 
-    timeline.style.setProperty('--line-top', `${lineTop}px`);
-    timeline.style.setProperty('--line-height', `${lineHeight}px`);
-    timeline.style.setProperty('--line-x',      `${lineX}px`);
+      if (height <= 0) continue;
 
+      const seg = document.createElement('span');
+      seg.className = 'timeline-segment';
+      seg.setAttribute('aria-hidden', 'true');
+      seg.style.setProperty('--segment-left', `${lineX - lineWidth / 2}px`);
+      seg.style.setProperty('--segment-top', `${top}px`);
+      seg.style.setProperty('--segment-height', `${height}px`);
+      timeline.appendChild(seg);
+    }
   };
 
-  // Initial calculation (called after sections are injected into DOM)
-  timelines.forEach(updateTimeline);
+  const refreshAll = () => timelines.forEach(updateTimeline);
 
-  // Recalculate whenever layout changes (font load, images, resize)
+  refreshAll();
+
   const observer = new ResizeObserver(entries => {
     entries.forEach(entry => updateTimeline(entry.target));
   });
   timelines.forEach(t => observer.observe(t));
 
-  window.addEventListener('resize', () => timelines.forEach(updateTimeline), { passive: true });
+  window.addEventListener('resize', refreshAll, { passive: true });
+
+  if (document.fonts?.ready) {
+    document.fonts.ready.then(refreshAll);
+  }
+
+  // Recalculate after fade-in animations on timeline rows (transform shifts markers).
+  document.querySelectorAll('.timeline-item.animate-fadeIn').forEach(item => {
+    item.addEventListener('animationend', refreshAll, { once: true });
+  });
+
+  const fadeSec = parseFloat(
+    getComputedStyle(document.documentElement).getPropertyValue('--fade-duration')
+  );
+  if (!Number.isNaN(fadeSec)) {
+    setTimeout(refreshAll, fadeSec * 1000 + 50);
+  }
 }

@@ -17,12 +17,20 @@
     padding-left: var(--timeline-padding-left);
   }
 
-  /* Vertical line — same JS vars, so it stays perfectly centred on mobile too */
+  /* Gap segments — same as desktop (injected by JS) */
   .timeline::before {
-    top:    var(--line-top,    10px);
-    height: var(--line-height, calc(100% - 20px));
-    left:   calc(var(--line-x, calc(var(--timeline-padding-left) + var(--timeline-circle-size) / 2))
-                - var(--timeline-line-width) / 2);
+    display: none;
+  }
+
+  .timeline-segment {
+    position: absolute;
+    top: var(--segment-top);
+    left: var(--segment-left);
+    width: var(--timeline-line-width);
+    height: var(--segment-height);
+    background-color: var(--timeline-border);
+    z-index: 0;
+    pointer-events: none;
   }
 
   /* Grid layout: marker spans both rows, date on row-1, content on row-2 */
@@ -34,6 +42,8 @@
     row-gap: 0.2rem;
     align-items: start;
     margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
   }
 
   .timeline-item:last-child { margin-bottom: 0; }
