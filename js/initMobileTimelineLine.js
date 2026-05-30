@@ -26,8 +26,6 @@ export function initMobileTimelineLine() {
     const lineTop = snapToDevicePixel(firstBox.bottom - box.top);
     const lineBottom = snapToDevicePixel(lastBox.top - box.top);
     const lineHeight = Math.max(0, lineBottom - lineTop);
-    const firstStyle = window.getComputedStyle(first);
-    const lastStyle = window.getComputedStyle(last);
 
     // Horizontal: centre of the marker column (same for all markers)
     const lineX = snapToDevicePixel(firstBox.left - box.left + firstBox.width / 2);
@@ -35,14 +33,6 @@ export function initMobileTimelineLine() {
     timeline.style.setProperty('--line-top', `${lineTop}px`);
     timeline.style.setProperty('--line-height', `${lineHeight}px`);
     timeline.style.setProperty('--line-x',      `${lineX}px`);
-
-    // #region agent log
-    fetch('http://127.0.0.1:7887/ingest/050c80fe-e65a-4489-88a6-32daed476443',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'04b5bd'},body:JSON.stringify({sessionId:'04b5bd',runId:'timeline-endpoint-debug',hypothesisId:'H1',location:'js/initMobileTimelineLine.js:31',message:'Timeline endpoint geometry comparison',data:{itemCount:markers.length,viewportWidth:window.innerWidth,firstTop:firstBox.top-box.top,firstBottom:firstBox.bottom-box.top,lastTop:lastBox.top-box.top,lastBottom:lastBox.bottom-box.top,lineTop,lineBottom,lineHeight,lineEndFromHeight:lineTop+lineHeight,deltaEndVsLastTop:(lineTop+lineHeight)-(lastBox.top-box.top),firstBorder:firstStyle.borderWidth,lastBorder:lastStyle.borderWidth,firstBoxShadow:firstStyle.boxShadow,lastBoxShadow:lastStyle.boxShadow,firstTransform:firstStyle.transform,lastTransform:lastStyle.transform},timestamp:Date.now()})}).catch(()=>{});
-    // #endregion
-    // #region agent log
-    const lineStyle = window.getComputedStyle(timeline, "::before");
-    fetch('http://127.0.0.1:7887/ingest/050c80fe-e65a-4489-88a6-32daed476443',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'04b5bd'},body:JSON.stringify({sessionId:'04b5bd',runId:'timeline-render-debug',hypothesisId:'H3',location:'js/initMobileTimelineLine.js:38',message:'Timeline pseudo-element render metrics',data:{devicePixelRatio:window.devicePixelRatio,beforeTop:lineStyle.top,beforeHeight:lineStyle.height,beforeLeft:lineStyle.left,beforeWidth:lineStyle.width,beforeTransform:lineStyle.transform,beforeBorderRadius:lineStyle.borderRadius,markerCenterX:lineX},timestamp:Date.now()})}).catch(()=>{});
-    // #endregion
 
   };
 

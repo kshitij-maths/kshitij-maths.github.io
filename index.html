@@ -130,7 +130,15 @@
     import { loadSections } from "./js/main.js";
 
     window.addEventListener("DOMContentLoaded", async () => {
-      await loadSections();
+      try {
+        await loadSections();
+      } catch (err) {
+        console.error("Failed to load page sections:", err);
+        const loader = document.getElementById("loadingIndicator");
+        if (loader) {
+          loader.innerHTML = "<h3>Content failed to load. Please refresh the page.</h3>";
+        }
+      }
       document.getElementById("year").textContent = new Date().getFullYear();
     });
   </script>

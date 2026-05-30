@@ -24,7 +24,8 @@ export async function loadSections() {
   const failedSections = [];
 
   // Fetch all sections in parallel instead of sequentially
-  const base = import.meta.env.BASE_URL;
+  // import.meta.env is injected by Vite; fall back to "/" on plain static hosts (GitHub Pages).
+  const base = import.meta.env?.BASE_URL ?? "/";
   const responses = await Promise.all(
     sections.map(file => fetch(`${base}sections/${file}`).catch(err => ({
       status: 0,
