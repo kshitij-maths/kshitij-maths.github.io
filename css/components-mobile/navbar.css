@@ -1,5 +1,5 @@
 /* =========================
-   NAVBAR — HAMBURGER (≤ 1024 px: phones + tablets)
+   NAVBAR — HAMBURGER (≤ 768 px: phones)
 ========================= */
 
 /* Desktop: hide hamburger button */
@@ -30,9 +30,9 @@
 .dark .hamburger-btn .bar { background-color: var(--text-dark); }
 
 /* -------------------------------------------------------
-   Trigger hamburger at ≤ 1024 px (phones + tablets)
+   Trigger hamburger at ≤ 768 px (phones only)
 ------------------------------------------------------- */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
 
   /* --- Container --- */
   header#navbar .mobile-nav-container {

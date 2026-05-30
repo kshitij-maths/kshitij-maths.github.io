@@ -14,6 +14,3 @@ export function initPopAnimations() {
         // You could use IntersectionObserver here
     });
 }
-
-// Expose globally
-window.initPopAnimations = initPopAnimations;

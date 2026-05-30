@@ -38,9 +38,6 @@
 
   <link rel="icon" type="image/webp" href="images/photo.webp">
 
-  <!-- Tailwind CSS utility classes -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
 </head>
 <body>
 
@@ -53,17 +50,11 @@
         <span class="bar"></span>
       </button>
 
-      <div class="logo"></div> 
       <nav id="mainNav">
         <ul>
           <li><a href="#hero" class="top-link">Home</a></li>
-          <li><a href="#about" class="top-link">About</a></li>
-          <li><a href="#employment" class="top-link">Employment</a></li>
-          <li><a href="#education" class="top-link">Education</a></li>
           <li><a href="#research" class="top-link">Research</a></li>
-          <li><a href="#teaching" class="top-link">Teaching</a></li>
-          <li><a href="#honours" class="top-link">Honours</a></li>
-          <li><a href="#events" class="top-link">Activities</a></li>
+          <li><a href="#cv" class="top-link">CV</a></li>
         </ul>
       </nav>
 
@@ -137,23 +128,6 @@
 
   <script type="module">
     import { loadSections } from "./js/main.js";
-    import { initDarkMode } from "./js/initDarkMode.js";
-    import { initNavigation } from "./js/initNavigation.js";
-    import { initHeroTicker } from "./js/initHeroTicker.js";
-    import { initScrollSpy } from "./js/initScrollSpy.js";
-    import { initResearchFilters } from "./js/initResearchFilters.js";
-    import { initPopAnimations } from "./js/initPopAnimations.js";
-    import { initMobileNavbar } from "./js/initMobileNavbar.js";
-    import { initMobileTimelineLine } from "./js/initMobileTimelineLine.js";
-
-    window.initDarkMode = initDarkMode;
-    window.initNavigation = initNavigation;
-    window.initHeroTicker = initHeroTicker;
-    window.initScrollSpy = initScrollSpy;
-    window.initResearchFilters = initResearchFilters;
-    window.initPopAnimations = initPopAnimations;
-    window.initMobileNavbar = initMobileNavbar;
-    window.initMobileTimelineLine = initMobileTimelineLine;
 
     window.addEventListener("DOMContentLoaded", async () => {
       await loadSections();

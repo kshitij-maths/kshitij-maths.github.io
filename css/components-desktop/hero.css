@@ -20,6 +20,14 @@
   gap: var(--spacing-4xl);
 }
 
+.hero-about {
+  margin-top: var(--spacing-2xl);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
 .hero-text  { width: 50%; min-width: 260px; }
 
 .hero-image {
@@ -30,24 +38,13 @@
 }
 
 .hero-name {
-  display: inline-block;
-  width: 25rem;
-  min-height: 2.2rem;
-  overflow: hidden;
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 0.25rem;
   color: #1e40af;
-  transition: color 0.8s ease-in-out;
 }
 
 .dark .hero-name { color: #60a5fa; }
-
-.hero-name.hindi .name-inner {
-  transform: scaleX(1.25);
-  transform-origin: left;
-  display: inline-block;
-}
 
 .hero-role {
   font-size: 1rem;
@@ -115,7 +112,7 @@
     height: 220px;
   }
 
-  .hero-name { width: auto; font-size: 1.35rem; }
+  .hero-name { font-size: 1.35rem; }
 }
 
 /* =========================
@@ -124,5 +121,4 @@
 @media (min-width: 1025px) and (max-width: 1280px) {
   .hero-container { gap: 3rem; }
   .hero-image img  { width: 260px; height: 260px; }
-  .hero-name       { width: 22rem; }
 }

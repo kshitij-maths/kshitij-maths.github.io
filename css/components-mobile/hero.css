@@ -24,13 +24,7 @@
   }
 
   .hero-name {
-    width: auto;
     font-size: 1.25rem;
-    overflow: visible;
-  }
-
-  .hero-name.hindi .name-inner {
-    transform-origin: left;
   }
 
   .hero-image img {

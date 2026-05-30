@@ -39,15 +39,13 @@ header#navbar {
 
 header#navbar .container {
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 1rem;
   padding: 0.75rem 2rem;
-  flex-wrap: nowrap;
   background-color: var(--navbar-bg-color);
   border-radius: 1rem;
-  /* Fix: use width + box-sizing so the bar never spills past the viewport */
   box-sizing: border-box;
   width: calc(100% - 1rem);
   max-width: 1400px;
@@ -57,10 +55,9 @@ header#navbar .container {
   transition: box-shadow 0.3s ease;
 }
 
-/* Logo spacer — keeps nav centred */
-.logo {
-  flex: 1;
-  display: block;
+.hamburger-btn {
+  grid-column: 1;
+  justify-self: start;
 }
 
 /* =========================
@@ -106,18 +103,18 @@ header#navbar .container::after {
    NAV LINKS
 ========================= */
 header#navbar nav {
+  grid-column: 2;
+  justify-self: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 0 1 auto;
-  min-width: 0;        /* allow shrinking */
   margin: 0;
   padding: 0;
 }
 
 header#navbar nav ul {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
   align-items: center;
   justify-content: center;
   margin: 0;
@@ -132,8 +129,8 @@ header#navbar nav a.top-link {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 0.25rem;
-  font-size: 0.95rem;
+  padding: 0.5rem 0.5rem;
+  font-size: 1rem;
   font-weight: 500;
   line-height: normal;
   color: var(--text-light);
@@ -171,33 +168,10 @@ header#navbar nav a.top-link.active       { box-shadow: 0 2px 0 0 var(--primary-
 .dark .theme-button:hover     { color: var(--primary-color-dark); }
 
 .theme-toggle-wrapper {
-  flex: 1;
+  grid-column: 3;
+  justify-self: end;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-}
-
-/* ======================================================
-   DESKTOP NAVBAR RESPONSIVE BREAKPOINTS (> 1024 px)
-====================================================== */
-
-/* Large desktop (> 1440 px) — generous spacing */
-@media (min-width: 1441px) {
-  header#navbar nav ul { gap: 2.5rem; }
-  header#navbar nav a.top-link { font-size: 1rem; }
-}
-
-/* Standard desktop (1281 – 1440 px) — default above */
-@media (min-width: 1281px) and (max-width: 1440px) {
-  header#navbar nav ul { gap: 1.75rem; }
-  header#navbar nav a.top-link { font-size: 0.95rem; }
-}
-
-/* Mid desktop (1025 – 1280 px): 13" laptops — compact links */
-@media (min-width: 1025px) and (max-width: 1280px) {
-  header#navbar .container { padding: 0.6rem 1.25rem; }
-  header#navbar nav ul { gap: 1rem; }
-  header#navbar nav a.top-link { font-size: 0.85rem; padding: 0.4rem 0.2rem; }
 }
 
 /* =========================
