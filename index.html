@@ -4,6 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dr. Kshitij Kumar Pandey</title>
+
+    <!-- Content-Security-Policy — tightened now that fonts are self-hosted -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self';"
+    />
+
+    <!-- Theme colour for mobile browser chrome (U7) -->
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b0f19" media="(prefers-color-scheme: dark)" />
     <script>
       (function () {
         const theme = localStorage.getItem("theme") || "auto";
@@ -22,6 +32,31 @@
       content="Dr. Kshitij Kumar Pandey is a Postdoctoral Researcher at SISSA. His research focuses on approximation theory, splines, and fractal functions."
     />
     <meta name="author" content="Dr. Kshitij Kumar Pandey" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://kshitij-maths.github.io/" />
+
+    <!-- Open Graph (LinkedIn, WhatsApp, Facebook previews) -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content="https://kshitij-maths.github.io/" />
+    <meta property="og:title" content="Dr. Kshitij Kumar Pandey — Postdoctoral Researcher at SISSA" />
+    <meta
+      property="og:description"
+      content="Postdoctoral Researcher at SISSA working on approximation theory, splines, and fractal functions."
+    />
+    <meta property="og:image" content="https://kshitij-maths.github.io/images/photo.webp" />
+    <meta property="og:image:width" content="300" />
+    <meta property="og:image:height" content="300" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Dr. Kshitij Kumar Pandey — Postdoctoral Researcher at SISSA" />
+    <meta
+      name="twitter:description"
+      content="Postdoctoral Researcher at SISSA working on approximation theory, splines, and fractal functions."
+    />
+    <meta name="twitter:image" content="https://kshitij-maths.github.io/images/photo.webp" />
 
     <!-- Structured data for search engines -->
     <script type="application/ld+json">
@@ -45,18 +80,21 @@
       }
     </script>
 
-    <!-- Fonts: Lato (body), Pacifico (headings), Inter/Poppins (UI) -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&family=Lato:wght@400;700&family=Pacifico&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Fonts served locally — no Google request, no GDPR concern -->
 
 
+    <!-- SVG favicon with initials — crisp at all sizes (S5/U6) -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon-BBeEGYRY.svg" />
     <link rel="icon" type="image/webp" href="/assets/photo-lO-BFSvV.webp" />
-    <script type="module" crossorigin src="/assets/index-CB_3t5De.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CH4EepF7.css">
+
+    <!-- Preload LCP image so the browser fetches it as early as possible -->
+    <link rel="preload" as="image" href="/assets/photo-lO-BFSvV.webp" type="image/webp" fetchpriority="high" />
+    <script type="module" crossorigin src="/assets/index-Cff9OFbn.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BI0UyK03.css">
   </head>
   <body>
+    <!-- Skip-to-content link for keyboard users -->
+    <a class="skip-link" href="#mainContent">Skip to main content</a>
     <header id="navbar">
       <div class="container mobile-nav-container">
         <button id="mobileMenuBtn" class="hamburger-btn" aria-label="Toggle Menu">
@@ -65,7 +103,7 @@
           <span class="bar"></span>
         </button>
 
-        <nav id="mainNav">
+        <nav id="mainNav" aria-label="Main navigation">
           <ul>
             <li><a href="#hero" class="top-link">Home</a></li>
             <li><a href="#research" class="top-link">Research</a></li>
@@ -74,7 +112,8 @@
         </nav>
 
         <div class="theme-toggle-wrapper">
-          <button id="themeButton" class="theme-button" title="Toggle theme">🌓</button>
+          <!-- aria-label updated dynamically by initDarkMode.js (A1) -->
+          <button id="themeButton" class="theme-button" aria-label="Switch to light theme" title="Toggle theme">🌓</button>
         </div>
       </div>
     </header>
@@ -91,6 +130,7 @@
                 alt="Dr. Kshitij Kumar Pandey"
                 width="300"
                 height="300"
+                fetchpriority="high"
               />
             </picture>
           </div>
@@ -98,7 +138,8 @@
           <!-- Name & Details -->
           <div class="hero-text">
             <div class="hero-content-wrapper">
-              <div class="hero-name">Kshitij Kumar Pandey</div>
+              <!-- Promoted to h1 for SEO and accessibility (U1) -->
+              <h1 class="hero-name">Kshitij Kumar Pandey</h1>
               <p class="hero-role">
                 Postdoctoral Researcher at
                 <a
@@ -126,7 +167,7 @@
             </div>
           </div>
 
-          <!-- Social links -->
+          <!-- Social links — descriptive alt text for screen readers (A4) -->
           <div class="sidebar-socials">
             <div class="profile-links-row">
               <a
@@ -136,7 +177,7 @@
                 title="ResearchGate"
                 class="profile-link"
               >
-                <img src="/assets/rg-logo-Cp4aVilX.png" class="profile-logo" alt="ResearchGate" />
+                <img src="/assets/rg-logo-Cp4aVilX.png" class="profile-logo" alt="Kshitij Kumar Pandey on ResearchGate" width="30" height="30" loading="lazy" />
               </a>
               <a
                 href="https://github.com/kshitij-maths"
@@ -145,7 +186,7 @@
                 title="GitHub"
                 class="profile-link"
               >
-                <img src="/assets/github-logo-BBurSEXf.png" class="profile-logo" alt="GitHub" />
+                <img src="/assets/github-logo-BBurSEXf.png" class="profile-logo" alt="Kshitij Kumar Pandey on GitHub" width="30" height="30" loading="lazy" />
               </a>
               <a
                 href="https://scholar.google.com/citations?user=ND7KwA4AAAAJ&hl=en"
@@ -154,7 +195,7 @@
                 title="Google Scholar"
                 class="profile-link"
               >
-                <img src="/assets/gs-logo-DH3xNLwG.png" class="profile-logo" alt="Google Scholar" />
+                <img src="/assets/gs-logo-DH3xNLwG.png" class="profile-logo" alt="Kshitij Kumar Pandey on Google Scholar" width="30" height="30" loading="lazy" />
               </a>
               <a
                 href="https://www.scopus.com/authid/detail.uri?authorId=57221158052"
@@ -163,7 +204,7 @@
                 title="Scopus"
                 class="profile-link"
               >
-                <img src="/assets/scopus-logo-DYV3ySw2.png" class="profile-logo" alt="Scopus" />
+                <img src="/assets/scopus-logo-DYV3ySw2.png" class="profile-logo" alt="Kshitij Kumar Pandey on Scopus" width="30" height="30" loading="lazy" />
               </a>
               <a
                 href="https://mathscinet.ams.org/mathscinet/author?authorId=1423365"
@@ -172,7 +213,7 @@
                 title="MathSciNet"
                 class="profile-link"
               >
-                <img src="data:image/png;base64,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" class="profile-logo" alt="MathSciNet" />
+                <img src="data:image/png;base64,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" class="profile-logo" alt="Kshitij Kumar Pandey on MathSciNet" width="30" height="30" loading="lazy" />
               </a>
               <a
                 href="https://orcid.org/0000-0003-1356-9290"
@@ -181,7 +222,7 @@
                 title="ORCID"
                 class="profile-link"
               >
-                <img src="/assets/orcid-logo-DHVDBwHh.png" class="profile-logo" alt="ORCID" />
+                <img src="/assets/orcid-logo-DHVDBwHh.png" class="profile-logo" alt="Kshitij Kumar Pandey on ORCID" width="30" height="30" loading="lazy" />
               </a>
               <a
                 href="https://huggingface.co/kshitij-pandey"
@@ -190,20 +231,20 @@
                 title="Hugging Face"
                 class="profile-link"
               >
-                <img src="/assets/hf-logo-DfcsZtBg.png" class="profile-logo" alt="Hugging Face" />
+                <img src="/assets/hf-logo-DfcsZtBg.png" class="profile-logo" alt="Kshitij Kumar Pandey on Hugging Face" width="30" height="30" loading="lazy" />
               </a>
             </div>
           </div>
 
           <!-- Mathematical Quote Card -->
           <div class="sidebar-quote quote-card">
-            <span class="math-symbol">Σ</span>
-            <span class="math-symbol">∞</span>
-            <span class="math-symbol">△</span>
-            <span class="math-symbol">○</span>
-            <span class="math-symbol">√</span>
-            <span class="math-symbol">∫</span>
-            <span class="math-symbol">Δ</span>
+            <span class="math-symbol" aria-hidden="true">Σ</span>
+            <span class="math-symbol" aria-hidden="true">∞</span>
+            <span class="math-symbol" aria-hidden="true">△</span>
+            <span class="math-symbol" aria-hidden="true">○</span>
+            <span class="math-symbol" aria-hidden="true">√</span>
+            <span class="math-symbol" aria-hidden="true">∫</span>
+            <span class="math-symbol" aria-hidden="true">Δ</span>
             <div class="quote-text">"यत किंचित वस्तु तत सर्वं, गणितेन बिना नहि!"</div>
             <div class="quote-translation">
               "Whatever is there in this entire universe, everything is based on mathematics!"
@@ -219,18 +260,24 @@
 
       <div class="main-content-wrapper">
         <main id="mainContent" class="main-content">
+          <!-- Loading spinner — visible on slow connections (U4) -->
           <div
             id="loadingIndicator"
             style="text-align: center; padding: 5rem 2rem; color: var(--text-light)"
+            role="status"
+            aria-live="polite"
+            aria-label="Loading page content"
           >
-            <h3>Loading content...</h3>
+            <div class="loading-spinner" aria-hidden="true"></div>
+            <p style="margin-top: 1rem; font-size: 0.95rem;">Loading content…</p>
           </div>
         </main>
       </div>
     </div>
 
-    <!-- Hidden bottom-info for mobile fallback (hidden on desktop) -->
-    <section id="bottom-info">
+    <!-- Mobile-only fallback section (hidden on desktop via CSS) -->
+    <!-- aria-hidden: duplicate of sidebar content, screen readers see sidebar version (A5) -->
+    <section id="bottom-info" aria-hidden="true">
       <div class="container">
         <div class="bottom-row">
           <div class="card profile-card-single">
@@ -241,8 +288,9 @@
                 rel="noopener noreferrer"
                 title="ResearchGate"
                 class="profile-link"
+                tabindex="-1"
               >
-                <img src="/assets/rg-logo-Cp4aVilX.png" class="profile-logo" alt="ResearchGate" />
+                <img src="/assets/rg-logo-Cp4aVilX.png" class="profile-logo" alt="" />
               </a>
               <a
                 href="https://github.com/kshitij-maths"
@@ -250,8 +298,9 @@
                 rel="noopener noreferrer"
                 title="GitHub"
                 class="profile-link"
+                tabindex="-1"
               >
-                <img src="/assets/github-logo-BBurSEXf.png" class="profile-logo" alt="GitHub" />
+                <img src="/assets/github-logo-BBurSEXf.png" class="profile-logo" alt="" />
               </a>
               <a
                 href="https://scholar.google.com/citations?user=ND7KwA4AAAAJ&hl=en"
@@ -259,8 +308,9 @@
                 rel="noopener noreferrer"
                 title="Google Scholar"
                 class="profile-link"
+                tabindex="-1"
               >
-                <img src="/assets/gs-logo-DH3xNLwG.png" class="profile-logo" alt="Google Scholar" />
+                <img src="/assets/gs-logo-DH3xNLwG.png" class="profile-logo" alt="" />
               </a>
               <a
                 href="https://www.scopus.com/authid/detail.uri?authorId=57221158052"
@@ -268,8 +318,9 @@
                 rel="noopener noreferrer"
                 title="Scopus"
                 class="profile-link"
+                tabindex="-1"
               >
-                <img src="/assets/scopus-logo-DYV3ySw2.png" class="profile-logo" alt="Scopus" />
+                <img src="/assets/scopus-logo-DYV3ySw2.png" class="profile-logo" alt="" />
               </a>
               <a
                 href="https://mathscinet.ams.org/mathscinet/author?authorId=1423365"
@@ -277,8 +328,9 @@
                 rel="noopener noreferrer"
                 title="MathSciNet"
                 class="profile-link"
+                tabindex="-1"
               >
-                <img src="data:image/png;base64,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" class="profile-logo" alt="MathSciNet" />
+                <img src="data:image/png;base64,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" class="profile-logo" alt="" />
               </a>
               <a
                 href="https://orcid.org/0000-0003-1356-9290"
@@ -286,8 +338,9 @@
                 rel="noopener noreferrer"
                 title="ORCID"
                 class="profile-link"
+                tabindex="-1"
               >
-                <img src="/assets/orcid-logo-DHVDBwHh.png" class="profile-logo" alt="ORCID" />
+                <img src="/assets/orcid-logo-DHVDBwHh.png" class="profile-logo" alt="" />
               </a>
               <a
                 href="https://huggingface.co/kshitij-pandey"
@@ -295,22 +348,23 @@
                 rel="noopener noreferrer"
                 title="Hugging Face"
                 class="profile-link"
+                tabindex="-1"
               >
-                <img src="/assets/hf-logo-DfcsZtBg.png" class="profile-logo" alt="Hugging Face" />
+                <img src="/assets/hf-logo-DfcsZtBg.png" class="profile-logo" alt="" />
               </a>
             </div>
           </div>
 
           <div class="quote-card">
-            <span class="math-symbol">Σ</span>
-            <span class="math-symbol">∞</span>
-            <span class="math-symbol">△</span>
-            <span class="math-symbol">○</span>
-            <span class="math-symbol">√</span>
-            <span class="math-symbol">∫</span>
-            <span class="math-symbol">Δ</span>
-            <span class="math-symbol">θ</span>
-            <span class="math-symbol">λ</span>
+            <span class="math-symbol" aria-hidden="true">Σ</span>
+            <span class="math-symbol" aria-hidden="true">∞</span>
+            <span class="math-symbol" aria-hidden="true">△</span>
+            <span class="math-symbol" aria-hidden="true">○</span>
+            <span class="math-symbol" aria-hidden="true">√</span>
+            <span class="math-symbol" aria-hidden="true">∫</span>
+            <span class="math-symbol" aria-hidden="true">Δ</span>
+            <span class="math-symbol" aria-hidden="true">θ</span>
+            <span class="math-symbol" aria-hidden="true">λ</span>
 
             <div class="quote-text">"यत किंचित वस्तु तत सर्वं, गणितेन बिना नहि!"</div>
             <div class="quote-translation">
