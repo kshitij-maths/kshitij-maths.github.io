@@ -10,7 +10,7 @@
 
     <!-- Type filters (hardcoded — types are fixed categories) -->
     <div class="mb-4 flex-row-wrap" role="group" aria-label="Filter by publication type">
-      <button class="type-filter-btn" data-type="all" aria-pressed="false">All</button>
+      <button class="type-filter-btn active" data-type="all" aria-pressed="true">All</button>
       <button class="type-filter-btn" data-type="journal" aria-pressed="false">Journal Articles</button>
       <button class="type-filter-btn" data-type="conference" aria-pressed="false">Conference Proceedings</button>
     </div>
@@ -19,7 +19,7 @@
          JS reads data-year from each pub-item and appends the rest automatically.
          To add a new year: just add a publication with that data-year value. -->
     <div class="mb-6 flex-row-wrap" id="yearFilterContainer" role="group" aria-label="Filter by year">
-      <button class="year-filter-btn" data-year="all" aria-pressed="false">All Years</button>
+      <button class="year-filter-btn active" data-year="all" aria-pressed="true">All Years</button>
     </div>
 
     <!-- Publications — add new entries here; year buttons appear automatically -->
