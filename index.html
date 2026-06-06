@@ -109,14 +109,17 @@
     </style>
 
 
+    <!-- Sitemap for crawlers -->
+    <link rel="sitemap" type="application/xml" href="data:text/xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHVybHNldCB4bWxucz0iaHR0cDovL3d3dy5zaXRlbWFwcy5vcmcvc2NoZW1hcy9zaXRlbWFwLzAuOSI+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9rc2hpdGlqcGFuZGV5LmluLzwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0wNi0wNjwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+CiAgICA8cHJpb3JpdHk+MS4wPC9wcmlvcml0eT4KICA8L3VybD4KPC91cmxzZXQ+Cg==" />
+
     <!-- SVG favicon with initials — crisp at all sizes (S5/U6) -->
     <link rel="icon" type="image/svg+xml" href="/assets/favicon-BBeEGYRY.svg" />
     <link rel="icon" type="image/webp" href="/assets/photo-lO-BFSvV.webp" />
 
     <!-- Preload LCP image so the browser fetches it as early as possible -->
     <link rel="preload" as="image" href="/assets/photo-lO-BFSvV.webp" type="image/webp" fetchpriority="high" />
-    <script type="module" crossorigin src="/assets/index-DXF3qm_T.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-BSsJgmlN.css">
+    <script type="module" crossorigin src="/assets/index-CcawFIXC.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Rkijy4Rx.css">
   </head>
   <body>
     <!-- Skip-to-content link for keyboard users -->
@@ -131,7 +134,7 @@
 
         <nav id="mainNav" aria-label="Main navigation">
           <ul>
-            <li><a href="#hero" class="top-link">Home</a></li>
+            <li><a href="#home" class="top-link">Home</a></li>
             <li><a href="#research" class="top-link">Research</a></li>
             <li><a href="#cv" class="top-link">CV</a></li>
           </ul>
@@ -262,7 +265,7 @@
             <span class="math-symbol" aria-hidden="true">√</span>
             <span class="math-symbol" aria-hidden="true">∫</span>
             <span class="math-symbol" aria-hidden="true">Δ</span>
-            <div class="quote-text">"यत किंचित वस्तु तत सर्वं, गणितेन बिना नहि!"</div>
+            <div class="quote-text" lang="hi">"यत किंचित वस्तु तत सर्वं, गणितेन बिना नहि!"</div>
             <div class="quote-translation">
               "Whatever is there in this entire universe, everything is based on mathematics!"
             </div>
@@ -297,86 +300,10 @@
     <section id="bottom-info" aria-hidden="true">
       <div class="container">
         <div class="bottom-row">
-          <div class="card profile-card-single">
-            <div class="profile-links-row">
-              <a
-                href="https://www.researchgate.net/profile/Kshitij-Pandey"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="ResearchGate"
-                class="profile-link"
-                tabindex="-1"
-              >
-                <img src="/assets/rg-logo-Cp4aVilX.png" class="profile-logo" alt="" width="26" height="26" loading="lazy" />
-              </a>
-              <a
-                href="https://github.com/kshitij-maths"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="GitHub"
-                class="profile-link"
-                tabindex="-1"
-              >
-                <img src="/assets/github-logo-BBurSEXf.png" class="profile-logo" alt="" width="26" height="26" loading="lazy" />
-              </a>
-              <a
-                href="https://scholar.google.com/citations?user=ND7KwA4AAAAJ&hl=en"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Google Scholar"
-                class="profile-link"
-                tabindex="-1"
-              >
-                <img src="/assets/gs-logo-BFLdUnBk.png" class="profile-logo" alt="" width="26" height="26" loading="lazy" />
-              </a>
-              <a
-                href="https://www.scopus.com/authid/detail.uri?authorId=57221158052"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Scopus"
-                class="profile-link"
-                tabindex="-1"
-              >
-                <img src="/assets/scopus-logo-DYV3ySw2.png" class="profile-logo" alt="" width="26" height="26" loading="lazy" />
-              </a>
-              <a
-                href="https://mathscinet.ams.org/mathscinet/author?authorId=1423365"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="MathSciNet"
-                class="profile-link"
-                tabindex="-1"
-              >
-                <img src="/assets/msn-logo-BkTX5q0k.png" class="profile-logo" alt="" width="26" height="26" loading="lazy" />
-              </a>
-              <a
-                href="https://orcid.org/0000-0003-1356-9290"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="ORCID"
-                class="profile-link"
-                tabindex="-1"
-              >
-                <img src="/assets/orcid-logo-DHVDBwHh.png" class="profile-logo" alt="" width="26" height="26" loading="lazy" />
-              </a>
-            </div>
+          <div class="card profile-card-single" id="mobile-socials-container">
           </div>
 
-          <div class="quote-card">
-            <span class="math-symbol" aria-hidden="true">Σ</span>
-            <span class="math-symbol" aria-hidden="true">∞</span>
-            <span class="math-symbol" aria-hidden="true">△</span>
-            <span class="math-symbol" aria-hidden="true">○</span>
-            <span class="math-symbol" aria-hidden="true">√</span>
-            <span class="math-symbol" aria-hidden="true">∫</span>
-            <span class="math-symbol" aria-hidden="true">Δ</span>
-            <span class="math-symbol" aria-hidden="true">θ</span>
-            <span class="math-symbol" aria-hidden="true">λ</span>
-
-            <div class="quote-text">"यत किंचित वस्तु तत सर्वं, गणितेन बिना नहि!"</div>
-            <div class="quote-translation">
-              "Whatever is there in this entire universe, everything is based on mathematics!"
-            </div>
+          <div class="quote-card" id="mobile-quote-container">
           </div>
         </div>
       </div>
@@ -384,8 +311,7 @@
 
     <!-- Body Footer (Mobile Only) -->
     <footer id="fixed-footer" class="copyright-footer body-footer">
-      <div class="container">
-        &copy; <span class="year-span"></span> Dr. Kshitij Kumar Pandey. All rights reserved.
+      <div class="container" id="mobile-footer-container">
       </div>
     </footer>
 
