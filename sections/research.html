@@ -8,18 +8,37 @@
       with a focus on their applications and interactions with fractal structures.
     </p>
 
-    <!-- Type filters (hardcoded — types are fixed categories) -->
-    <div class="mb-4 flex-row-wrap" role="group" aria-label="Filter by publication type">
-      <button class="type-filter-btn active" data-type="all" aria-pressed="true">All</button>
-      <button class="type-filter-btn" data-type="journal" aria-pressed="false">Journal Articles</button>
-      <button class="type-filter-btn" data-type="conference" aria-pressed="false">Conference Proceedings</button>
-    </div>
+    <!-- Publication filter dropdowns -->
+    <div class="pub-filters" role="group" aria-label="Filter publications">
 
-    <!-- Year filters — "All Years" is the only static button;
-         JS reads data-year from each pub-item and appends the rest automatically.
-         To add a new year: just add a publication with that data-year value. -->
-    <div class="mb-6 flex-row-wrap" id="yearFilterContainer" role="group" aria-label="Filter by year">
-      <button class="year-filter-btn active" data-year="all" aria-pressed="true">All Years</button>
+      <!-- Type filter -->
+      <div class="pub-dropdown" id="typeDropdown">
+        <button class="pub-dropdown-btn" type="button"
+                aria-haspopup="listbox" aria-expanded="false"
+                aria-label="Filter by publication type">
+          <span class="pub-dropdown-label">Select Type</span>
+          <span class="pub-dropdown-chevron" aria-hidden="true"></span>
+        </button>
+        <ul class="pub-dropdown-panel" role="listbox" aria-label="Publication type options">
+          <li class="pub-dropdown-option is-selected" data-value="all" role="option" aria-selected="true">Select Type</li>
+          <!-- JS injects type options from data-type attributes -->
+        </ul>
+      </div>
+
+      <!-- Year filter -->
+      <div class="pub-dropdown" id="yearDropdown">
+        <button class="pub-dropdown-btn" type="button"
+                aria-haspopup="listbox" aria-expanded="false"
+                aria-label="Filter by year">
+          <span class="pub-dropdown-label">Select Year</span>
+          <span class="pub-dropdown-chevron" aria-hidden="true"></span>
+        </button>
+        <ul class="pub-dropdown-panel" role="listbox" aria-label="Year options">
+          <li class="pub-dropdown-option is-selected" data-value="all" role="option" aria-selected="true">Select Year</li>
+          <!-- JS injects year options from data-year attributes -->
+        </ul>
+      </div>
+
     </div>
 
     <!-- Publications — add new entries here; year buttons appear automatically -->
@@ -29,24 +48,17 @@
       <li class="pub-item" data-type="journal" data-year="2024">
         <a href="https://doi.org/10.1515/dema-2024-0014" target="_blank" rel="noopener noreferrer">
           K.K. Pandey, N.A. Secelean, P. Viswanathan,
-          <em
-            >On bivariate fractal interpolation for countable data and associated nonlinear fractal
-            operator</em
-          >, <span class="journal-name">Demonstratio Mathematica</span>, 57 (2024), 20240014.
+          <em>On bivariate fractal interpolation for countable data and associated nonlinear fractal
+            operator</em>, <span class="journal-name">Demonstratio Mathematica</span>, 57 (2024), 20240014.
         </a>
       </li>
 
       <li class="pub-item" data-type="journal" data-year="2024">
-        <a
-          href="https://doi.org/10.1016/j.na.2023.113416"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href="https://doi.org/10.1016/j.na.2023.113416" target="_blank" rel="noopener noreferrer">
           K.K. Pandey, P. Viswanathan,
-          <em
-            >Some Elementary Properties of Bernstein-Kantorovich Operators on Mixed Norm Lebesgue
-            Spaces and their Implications in Fractal Approximation</em
-          >, <span class="journal-name">Nonlinear Analysis: Theory, Methods and Applications</span>,
+          <em>Some Elementary Properties of Bernstein-Kantorovich Operators on Mixed Norm Lebesgue
+            Spaces and their Implications in Fractal Approximation</em>, <span class="journal-name">Nonlinear Analysis:
+            Theory, Methods and Applications</span>,
           239 (2024), 113416.
         </a>
       </li>
@@ -54,53 +66,36 @@
       <li class="pub-item" data-type="journal" data-year="2022">
         <a href="https://doi.org/10.1553/etna_vol55s627" target="_blank" rel="noopener noreferrer">
           K.K. Pandey, P. Viswanathan,
-          <em
-            >Multivariate fractal interpolation functions: Some approximation aspects and associated
-            fractal interpolation operator</em
-          >, <span class="journal-name">Electronic Transactions on Numerical Analysis</span>, 55
+          <em>Multivariate fractal interpolation functions: Some approximation aspects and associated
+            fractal interpolation operator</em>, <span class="journal-name">Electronic Transactions on Numerical
+            Analysis</span>, 55
           (2022), 627–651.
         </a>
       </li>
 
       <li class="pub-item" data-type="journal" data-year="2022">
-        <a
-          href="https://doi.org/10.1007/s11075-022-01261-7"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href="https://doi.org/10.1007/s11075-022-01261-7" target="_blank" rel="noopener noreferrer">
           K.K. Pandey, P. Viswanathan,
-          <em
-            >In reference to a self-referential approach towards smooth multivariate
-            approximation</em
-          >, <span class="journal-name">Numerical Algorithms</span>, 91 (2022), 251–281.
+          <em>In reference to a self-referential approach towards smooth multivariate
+            approximation</em>, <span class="journal-name">Numerical Algorithms</span>, 91 (2022), 251–281.
         </a>
       </li>
 
       <li class="pub-item" data-type="journal" data-year="2021">
-        <a
-          href="https://doi.org/10.3390/fractalfract5040185"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href="https://doi.org/10.3390/fractalfract5040185" target="_blank" rel="noopener noreferrer">
           K.K. Pandey, P. Viswanathan,
-          <em
-            >Multivariate fractal functions in some complete function spaces and fractional integral
-            of continuous fractal functions</em
-          >, <span class="journal-name">Fractal and Fractional</span>, 5(4), 185 (2021), 19 pages.
+          <em>Multivariate fractal functions in some complete function spaces and fractional integral
+            of continuous fractal functions</em>, <span class="journal-name">Fractal and Fractional</span>, 5(4), 185
+          (2021), 19 pages.
         </a>
       </li>
 
       <li class="pub-item" data-type="journal" data-year="2021">
-        <a
-          href="https://doi.org/10.1007/s00010-020-00766-7"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href="https://doi.org/10.1007/s00010-020-00766-7" target="_blank" rel="noopener noreferrer">
           K.K. Pandey, P. Viswanathan,
-          <em
-            >Countable zipper fractal interpolation and some elementary aspects of the associated
-            nonlinear zipper fractal operator</em
-          >, <span class="journal-name">Aequationes Mathematicae</span>, 95 (2021), 175–200.
+          <em>Countable zipper fractal interpolation and some elementary aspects of the associated
+            nonlinear zipper fractal operator</em>, <span class="journal-name">Aequationes Mathematicae</span>, 95
+          (2021), 175–200.
         </a>
       </li>
 
@@ -109,12 +104,14 @@
       <li class="pub-item" data-type="conference" data-year="2023">
         <a href="https://doi.org/10.46719/dsa2023.32.19" target="_blank" rel="noopener noreferrer">
           K.K. Pandey, S. Verma, P. Viswanathan,
-          <em
-            >Additive Decomposition of Vector-valued Continuous Functions with some Dimensional
-            Considerations of the Summands</em
-          >, <span class="journal-name">Dynamic Systems and Applications</span>, 32 (2023), 351–368.
+          <em>Additive Decomposition of Vector-valued Continuous Functions with some Dimensional
+            Considerations of the Summands</em>, <span class="journal-name">Dynamic Systems and Applications</span>, 32
+          (2023), 351–368.
         </a>
       </li>
+
+
+      <!-- ===== Preprints ===== -->
     </ul>
   </div>
 </section>
